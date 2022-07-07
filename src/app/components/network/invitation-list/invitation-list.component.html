@@ -1,0 +1,44 @@
+<app-header></app-header>
+<section class="container">
+    <div class="row">
+        <div class="col-md-8 mb-2">
+            <div class="card p-2">
+                <div class="inline">
+                    <h6 class="header">Invitations</h6>
+                </div>
+
+                <div *ngIf="requestList.length > 0">
+                    <ul>
+                        <li *ngFor="let item of requestList;let i = index">
+                            <div class="inline">
+                                <img class="profile"
+                                    [src]="item.user.profilePic != null ? item.user.profilePic:'assets/logo/profile_avater.png'">
+                                &nbsp;
+                                <div (click)="selectUser(item.user.userId)" class="pt-3">
+                                    <a>
+                                        <h6>{{item.user.firstName}} {{item.user.lastName}}</h6>
+                                        <label>{{item.user.headline}}</label>
+                                    </a>
+                                </div>
+                                <div class="menu">
+                                    <a href="javascript:void(0)" (click)="rejectRequest(item,i)"
+                                        *ngIf="item.isConnected == 'false'">Ignore</a> &nbsp;
+                                    <button class="btn btn-outline-primary btn-sm" *ngIf="item.isConnected == 'false'"
+                                        (click)="acceptRequest(item,i)">Accept</button>
+                                </div>
+                            </div>
+                        </li>
+                        <hr>
+                    </ul>
+                </div>
+                <div *ngIf="requestList.length == 0">
+                    <label>You dont have any request.</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-2">
+            <manage-network></manage-network>
+            <suggestion></suggestion>
+        </div>
+    </div>
+</section>

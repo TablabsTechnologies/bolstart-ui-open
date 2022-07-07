@@ -1,0 +1,108 @@
+<div>
+    <div class="job-wrap">
+        <div class="job-select-wrap">
+            <select class="job-select job-title">
+                <option value="0">Job Title</option>
+                <option value="1">Manager</option>
+                <option value="2">Assistant</option>
+            </select>
+        </div>
+        <div>
+            <button class="btn-job"> No. Total Applicant</button>
+            <button class="btn-job"> No. Cleared Assessment</button>
+            <button class="btn-job"> No. Reviewed</button>
+            <button class="btn-job"> No. Interviewed</button>
+            <button class="btn-job"> No. Rejected</button>
+            <button class="btn-job"> No. Hired</button>
+
+
+        </div>
+    </div>
+    <div class="second-wrap">
+        <select class="job-select">
+            <option value="0">Location</option>
+            <option value="1">pune</option>
+            <option value="2">Mumbai</option>
+        </select>
+        <select class="job-select">
+            <option value="0">University Rank</option>
+            <!-- <option value="1">Manager</option>
+            <option value="2">Assistant</option> -->
+        </select>
+        <select class="job-select">
+            <option value="0">Screener Question</option>
+            <!-- <option value="1">Manager</option>
+            <option value="2">Assistant</option> -->
+        </select>
+        <select class="job-select">
+            <option value="0">Sort</option>
+            <!-- <option value="1">Manager</option>
+            <option value="2">Assistant</option> -->
+        </select>
+    </div>
+    <div class="row">
+        <div class="col-5 section-first">
+            <div *ngIf="applicationList.length > 0" class="search-results" infinite-scroll
+                [infiniteScrollDistance]="scrollDistance" (scrolled)="onScrollDown()" [scrollWindow]="false"
+                [infiniteScrollThrottle]="throttle">
+                <div class="card" *ngFor="let item of applicationList">
+                    <div class="row">
+                        <div class="col-3 pr-0">
+                            <img [src]="add" class="profile">
+                        </div>
+                        <div class="col-9 pl-0">
+                            <h6>{{item.title}}</h6>
+                            <label class="sub-header">{{item.companyName}}</label><br />
+                            <label>{{item.location}} <span>{{item.status}} {{item.noApplicant}} days ago</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-7 section-second">
+            <div class="card">
+                <div class="row">
+                    <div class="col-3 pr-0">
+                        <img [src]="add" class="profile">
+                    </div>
+                    <div class="col-9 pl-0">
+                        <h6>{{applicantProfile.title}}</h6>
+                        <label class="sub-header">{{applicantProfile.companyName}}</label><br />
+                        <label>{{applicantProfile.location}} <span>{{applicantProfile.status}}
+                                {{applicantProfile.noApplicant}} days ago</span></label>
+
+                    </div>
+                </div>
+                <div class="second-wrap" style="border: none;">
+                    <select class="job-select">
+                        <option value="0">Rate</option>
+                        <option value="1">Manager</option>
+                        <option value="2">Assistant</option>
+                    </select>
+                    <button class="btn-job">Message</button>
+                    <select class="job-select">
+                        <option value="0">Contact</option>
+                    </select>
+
+                </div>
+            </div>
+            <div class="card">
+                <h6>Insight from profile</h6>
+                <div class="text-center">
+                    <a>View Full Profile</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="resume-wrap">
+                    <h6>Resume</h6>
+
+                    <span>
+                        <h6><i class="fa fa-download"></i> &nbsp; Download</h6>
+                    </span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

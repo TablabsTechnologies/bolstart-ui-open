@@ -1,0 +1,40 @@
+<h1 mat-dialog-title class="d-flex justify-content-between popup-heading-align">
+    {{data.heading}}
+    <a class="" href="javascript:;" (click)="onNoClick()">
+        <mat-icon class="close-btn-align">close</mat-icon>
+    </a>
+</h1>
+<form [formGroup]="bulkUpload">
+    <div class="bulk-upload-dialog-content">
+        <div id="upload-from-wrapper" draggable="true" ngClass="{{dragAreaClass}}" class="py-3 mb-2">
+            <div class="text-center">
+                <div class="icon">
+                    <label class="cursor-pointer" for="fileDropRef">
+                        <img class="m-2" src="assets/img/upload.jpeg" />
+                    </label>
+                </div>
+                <div id="demo-file" class="text">
+                    <span class="cursor-pointer"> Drag & Drop </span> Or
+                    <label class="cursor-pointer" for="fileDropRef">
+                        <a class="cursor-pointer">Browse</a>
+                    </label>
+                    <input type="file" #fileDropRef id="fileDropRef" formControlName="fileName"
+                        (change)="getUploadedDoc($event)" accept=".csv" class="inputfile" name="fileDropRef" />
+                </div>
+            </div>
+        </div>
+        <!-- <a href="{{data.downloadLink}}" *ngIf="data.isDownloadURL"
+            class="exela-primary-link fw-bold">{{data.downloadFileText}}</a>
+        <div class="text-wrap" *ngIf="data.isChkSendSignatory">
+            <mat-checkbox class="example-margin" formControlName="flag">
+                {{data.chkSendSignatoryText}}
+            </mat-checkbox>
+        </div> -->
+
+    </div>
+    <div mat-dialog-actions class="justify-content-end">
+        <button mat-button (click)="onNoClick()" class="btn btn-primary">{{data.noButton}}</button>
+        <button mat-button class="btn btn-primary"
+            (click)="onYesClick(bulkUpload.value,bulkUpload.valid)">{{data.yesButton}}</button>
+    </div>
+</form>

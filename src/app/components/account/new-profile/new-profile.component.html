@@ -1,0 +1,559 @@
+<div class="container">
+    <img src="assets/img/bslogo_1.png" style="height: 50px;width:190px;" alt="" class="img-fluid mb-4 d-block m-3">
+    <div id="stepper1" class="bs-stepper">
+        <div class="bs-stepper-header m-4">
+            <div class="step" data-target="#test-l-1">
+                <button class="step-trigger">
+                    <span class="bs-stepper-circle">1</span>
+                    <span class="bs-stepper-label">Profile</span>
+                </button>
+            </div>
+            <div class="line"></div>
+            <div class="step" data-target="#test-l-2">
+                <button class="step-trigger" [disabled]="selectedType == undefined">
+                    <span class="bs-stepper-circle">2</span>
+                    <span class="bs-stepper-label">Information</span>
+                </button>
+            </div>
+            <div class="line" [hidden]="type != 1"></div>
+            <div [hidden]="type != 1">
+                <div class="step" data-target="#test-l-4">
+                    <button class="step-trigger">
+                        <span class="bs-stepper-circle">3</span>
+                        <span class="bs-stepper-label">Experiance</span>
+                    </button>
+                </div>
+            </div>
+            <div class="line" [hidden]="type != 2"></div>
+            <div [hidden]="type != 2">
+                <div class="step" data-target="#test-l-3">
+                    <button class="step-trigger" [disabled]="!informationForm.valid">
+                        <span class="bs-stepper-circle">3</span>
+                        <span class="bs-stepper-label">Education</span>
+                    </button>
+                </div>
+            </div>
+            <div class="line" [hidden]="type != 2"></div>
+            <div [hidden]="type != 2">
+                <div class="step" data-target="#test-l-4">
+                    <button class="step-trigger">
+                        <span class="bs-stepper-circle">4</span>
+                        <span class="bs-stepper-label">Experiance</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="bs-stepper-content">
+            <div class="text-center mb-5">
+                <h6>Your Profile helps you discover new people and opportunities</h6>
+            </div>
+            <div class="row">
+
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="card content" id="test-l-1">
+                        <div class="card-header">
+                            <h6>Select Profile Type</h6>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="card type" [ngClass]="{'selected': selectedType == 'Startups'}"
+                                        (click)="selectType('Startups')">
+                                        <div class="card-body">
+                                            <h6><i class="fa fa-building"></i> &nbsp; Startup Founder</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card type" [ngClass]="{'selected': selectedType == 'Investors'}"
+                                        (click)="selectType('Investors')">
+                                        <div class="card-body">
+                                            <h6> <i class="fa fa-sitemap"></i>&nbsp;Investor</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card type" [ngClass]="{'selected': selectedType == 'Mentor'}"
+                                        (click)="selectType('Mentor')">
+                                        <div class="card-body">
+                                            <h6> <i class="fa fa-binoculars"></i>&nbsp; Mentor</h6>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2"></div>
+                                <div class="col-md-4">
+                                    <div class="card type" [ngClass]="{'selected': selectedType == 'Freelancer'}"
+                                        (click)="selectType('Freelancer')">
+                                        <div class="card-body">
+                                            <h6><i class="fa fa-briefcase"></i> &nbsp; Freelancer</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card type"
+                                        [ngClass]="{'selected': selectedType == 'Startup Enthusiast'}"
+                                        (click)="selectType('Startup Enthusiast')">
+                                        <div class="card-body">
+                                            <h6><i class="fa fa-black-tie"></i> &nbsp; Startup Enthusiast-Student</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2"></div>
+                            </div>
+                            <div class="text-right">
+                                <button class="btn btn-outline-primary" [disabled]="selectedType == undefined"
+                                    (click)="next()">Continue</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card content" id="test-l-2">
+                        <div class="card-header">
+                            <h6>Information</h6>
+                        </div>
+                        <hr>
+                        <div class="card-body">
+                            <form [formGroup]="informationForm" (submit)="infoSubmit()">
+                                <div class="row">
+                                    <div class="col col-md-4 p-2">
+                                        <label>First Name <span class="mandatory">*</span></label>
+                                        <input type="text" placeholder="eg. First Name" formControlName="firstName"
+                                            class="form-control">
+                                        <small class="text-danger"
+                                            *ngIf="informationForm.get('firstName').invalid && informationForm.get('firstName').touched">Enter
+                                            First Name.</small>
+                                    </div>
+                                    <div class="col col-md-4 p-2">
+                                        <label>Middle Name</label>
+                                        <input type="text" placeholder="eg. Middle Name" formControlName="middleNmae"
+                                            class="form-control">
+                                        <small class="text-danger"
+                                            *ngIf="informationForm.get('middleNmae').invalid && informationForm.get('middleNmae').touched">Enter
+                                            Middle Name.</small>
+                                    </div>
+                                    <div class="col col-md-4 p-2">
+                                        <label>Last Name <span class="mandatory">*</span></label>
+                                        <input type="text" placeholder="eg. Last Name" formControlName="lastName"
+                                            class="form-control">
+                                        <small class="text-danger"
+                                            *ngIf="informationForm.get('lastName').invalid && informationForm.get('lastName').touched">Enter
+                                            Last Name.</small>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <!-- <div class="col col-md-4 p-2">
+                                        <label>Company Name</label>
+                                        <input type="text" placeholder="eg. company Name" formControlName="companyName"
+                                            class="form-control">
+                                        <small class="text-danger" *ngIf="informationForm.get('companyName').invalid && informationForm.get('companyName').touched">Enter
+                                            company Name.</small>
+                                    </div> -->
+                                    <!-- <div class="col col-md-4 p-2" *ngIf="type == 1">
+                                        <label>GST</label>
+                                        <input type="text" placeholder="eg. 22AAAAA0000A1Z5" formControlName="gst"
+                                            class="form-control">
+                                        <small class="text-danger" *ngIf="informationForm.get('gst').invalid && informationForm.get('gst').touched">Enter
+                                            GST Number.</small>
+                                    </div> -->
+                                    <div class="col col-md-4 p-2" *ngIf="type == 2">
+                                        <label>Birthday</label>
+                                        <select class="form-control" formControlName="month">
+                                            <option value="" selected hidden disabled>select Month</option>
+                                            <option [value]="item" *ngFor="let item of monthList">{{item}}</option>
+                                        </select>
+                                        <small class="text-danger"
+                                            *ngIf="informationForm.get('month').invalid && informationForm.get('month').touched">Select
+                                            Month.</small>
+                                    </div>
+                                    <div class="col col-md-4 p-2" *ngIf="type == 2">
+                                        <label></label>
+                                        <select class="form-control" formControlName="day">
+                                            <option value='' selected hidden disabled>select Day</option>
+                                            <option [value]='item' *ngFor="let item of dayList">{{item}}</option>
+                                        </select>
+                                        <small class="text-danger"
+                                            *ngIf="informationForm.get('day').invalid && informationForm.get('day').touched">Select
+                                            Day.</small>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-12 p-2">
+                                        <label>Headline <span class="mandatory">*</span></label>
+                                        <input type="text" placeholder="eg. Assistant manager"
+                                            formControlName="headline" class="form-control">
+                                        <small class="text-danger"
+                                            *ngIf="informationForm.get('headline').invalid && informationForm.get('headline').touched">Add
+                                            Short
+                                            Headline.</small>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-12 p-2">
+                                        <label>Industry <span class="mandatory">*</span></label>
+                                        <select class="form-control" formControlName="industry">
+                                            <option value='' selected hidden disabled>select industry</option>
+                                            <option [value]='item' *ngFor="let item of industryList">{{item}}</option>
+                                        </select>
+                                        <small class="text-danger"
+                                            *ngIf="informationForm.get('industry').invalid && informationForm.get('industry').touched">Select
+                                            Industry.</small>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-4 p-2">
+                                        <label>Country</label>
+                                        <select class="form-control" formControlName="country"
+                                            (change)="selectCountry()">
+                                            <option value='' selected hidden disabled>select country
+                                            </option>
+                                            <option [value]='item.name' *ngFor="let item of countryList">{{item.name}}
+                                            </option>
+                                        </select>
+                                        <small class="text-danger"
+                                            *ngIf="informationForm.get('country').invalid && informationForm.get('country').touched">Select
+                                            Country.</small>
+                                    </div>
+                                    <div class="col col-md-4 p-2">
+                                        <label>States/Union territories</label>
+                                        <select class="form-control" formControlName="state" (change)="selectState()">
+                                            <option value='' selected hidden disabled>select States/Union territory
+                                            </option>
+                                            <option [value]='item.name' *ngFor="let item of stateList">{{item.name}}
+                                            </option>
+                                        </select>
+                                        <small class="text-danger"
+                                            *ngIf="informationForm.get('state').invalid && informationForm.get('state').touched">Select
+                                            States/Union territories.</small>
+                                    </div>
+                                    <div class="col col-md-4 p-2">
+                                        <label>City/Location/Landmark</label>
+                                        <!-- <input class="form-control" formArrayName="location" type="text"
+                                            placeholder="eg. Mumbai" /> -->
+                                        <select class="form-control" formControlName="location">
+                                            <option value='' selected hidden disabled>select States/Union territory
+                                            </option>
+                                            <option [value]='item.name' *ngFor="let item of cityList">{{item.name}}
+                                            </option>
+                                        </select>
+                                        <small class="text-danger"
+                                            *ngIf="informationForm.get('location').invalid && informationForm.get('location').touched">Select
+                                            Location.</small>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-12 p-2">
+                                        <label>About</label>
+                                        <textarea rows="4" type="text" placeholder="eg. About Me"
+                                            formControlName="aboutMe" class="form-control"></textarea>
+                                        <small class="text-danger"
+                                            *ngIf="informationForm.get('aboutMe').invalid && informationForm.get('aboutMe').touched">Add
+                                            About Information..</small>
+                                    </div>
+                                </div>
+
+                                <div class="text-right">
+                                    <button type="submit" class="btn btn-outline-primary">Next</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card content" id="test-l-3">
+                        <div class="card-header">
+                            <h6>Education Detail <span class="add-icon"><i class="fa fa-plus-circle" aria-hidden="true"
+                                        data-target="#eductionModel" data-toggle="modal"></i></span> </h6>
+                        </div>
+                        <hr>
+                        <div class="card-body">
+                            <div class="list-group">
+                                <div class="row" *ngFor="let item of schooleList;let i = index">
+                                    <div class="col-xl-1 pt-1">
+                                        <img style="width: 40px;" [src]="item.institutionLogo">
+                                    </div>
+                                    <div class="col-xl-10">
+                                        <h6>{{item.institutionName}}<br />
+                                            <label>{{item.stream}} {{item.startDate}}-{{item.endDate}}</label>
+                                        </h6>
+                                    </div>
+                                    <div class="col-xl-1">
+                                        <span class="add-icon"><i class="fa fa-trash"
+                                                (click)="deleteSchool(i)"></i></span>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="text-right">
+                                    <a href="javascript:void(0)" (click)="next()">Skip</a> &nbsp; <button
+                                        class="btn btn-outline-primary" (click)="next()">Next</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card content" id="test-l-4">
+                        <div class="card-header">
+                            <h6>Experience Detail <span class="add-icon"><i class="fa fa-plus-circle" aria-hidden="true"
+                                        data-target="#experianceModel" data-toggle="modal"></i></span> </h6>
+                        </div>
+                        <hr>
+                        <div class="card-body">
+                            <div class="list-group">
+                                <div class="row" *ngFor="let item of experianceList;let i = index">
+                                    <div class="col-xl-1 pt-1">
+                                        <img style="width: 40px;" [src]="item.companyLogo">
+                                    </div>
+                                    <div class="col-xl-10">
+                                        <h6>{{item.companyName}}<br />
+                                            <label>{{item.title}} {{item.startYear}}-{{item.endYear}}</label>
+                                        </h6>
+                                    </div>
+                                    <div class="col-xl-1">
+                                        <span class="add-icon"><i class="fa fa-trash" (click)="deleteExp(i)"></i></span>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="text-right" style="position: absolute; bottom: -70%; right: 0px;">
+                                <button *ngIf="!isLoader" class="btn btn-outline-primary"
+                                    (click)="addUserToCometChat()">Verify
+                                    Account</button>
+                                <button *ngIf="isLoader" class="btn btn-primary"><i class="fa fa-spinner fa-spin"
+                                        aria-hidden="true"></i>
+                                    &nbsp;&nbsp;Loading...</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- -------------------------------------------------------- -->
+    <div class="modal fade" id="eductionModel" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-Custheader p-2">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h6 class="modal-title">Add Education</h6>
+                </div>
+                <div class="modal-body">
+                    <form class="p-2" [formGroup]="educationForm" (submit)="eduSubmit()">
+                        <div class="row">
+                            <div class="col col-md-12 p-2">
+                                <label>School Name / college <span class="mandatory">*</span></label>
+                                <div class="form-control">
+                                    <img [src]="educationForm.value.institutionLogo" style="width: 20px;">
+                                    <input type="text" (blur)="onBlur()" (focus)="onFocus(1)" (keyup)="search($event)"
+                                        class="school" placeholder="eg. shivaji university"
+                                        formControlName="institutionName">
+                                </div>
+                                <small class="text-danger"
+                                    *ngIf="educationForm.get('institutionName').invalid && educationForm.get('institutionName').touched">Select
+                                    School
+                                    Name / college.</small>
+                                <div class="card list" *ngIf="showList == 1 && searchList.length > 0">
+                                    <li *ngFor="let item of searchList" (click)="selectItem(1,item)"><img
+                                            src="https://bolstartimages.s3.ap-south-1.amazonaws.com/profile/default/unversity.png"
+                                            style="width: 25px;">&nbsp;{{item.name}}</li>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-md-12 p-2">
+                                <label>Degree</label>
+                                <input type="text" (blur)="onBlur()" (focus)="onFocus(2)" (keyup)="search($event)"
+                                    placeholder="eg. Bachelor" class="form-control" formControlName="degree">
+                                <div class="card" *ngIf="showList == 2 && searchList.length > 0">
+                                    <li *ngFor="let item of searchList" (click)="selectItem(2,item)">{{item}}</li>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-md-12 p-2">
+                                <label>Field</label>
+                                <input type="text" (blur)="onBlur()" (focus)="onFocus(3)" (keyup)="search($event)"
+                                    placeholder="eg. Business" class="form-control" formControlName="stream">
+                                <div class="card" *ngIf="showList == 3 && searchList.length > 0">
+                                    <li *ngFor="let item of searchList" (click)="selectItem(3,item)">{{item}}</li>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-xl-6 p-2">
+                                <label>Start Year</label>
+                                <select class="form-control" formControlName="startDate">
+                                    <option value='' selected disabled hidden>Select Start year</option>
+                                    <option [value]="item" *ngFor="let item of yeaList">{{item}}</option>
+                                </select>
+                            </div>
+                            <div class="col col-xl-6 p-2">
+                                <label>End Year</label>
+                                <select class="form-control" formControlName="endDate">
+                                    <option value='' selected disabled hidden>Select End year</option>
+                                    <option [value]="item" *ngFor="let item of yeaList">{{item}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-md-12 p-2">
+                                <label>Grade</label>
+                                <input type="text" formControlName="grade" placeholder="Grade" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-md-12 p-2">
+                                <label>Activities and societies</label>
+                                <textarea type="text" formControlName="activities"
+                                    placeholder="Activities and societies" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-md-12 p-2">
+                                <label>Description</label>
+                                <textarea formControlName="activities" type="text" placeholder="Description"
+                                    class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-outline-primary">Save</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- -------------------------------------- -->
+    <div class="modal fade" id="experianceModel" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-Custheader p-2">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h6 class="modal-title">Add Experience</h6>
+                </div>
+                <div class="modal-body">
+                    <form class="p-2" [formGroup]="experianceForm" (submit)="expSubmit()">
+                        <div class="row">
+                            <div class="col col-md-12 p-2">
+                                <label>Title<span class="mandatory">*</span></label>
+                                <input type="text" class="form-control" placeholder="eg. Sales Manager"
+                                    formControlName="title">
+                                <small class="text-danger"
+                                    *ngIf="experianceForm.get('title').invalid && experianceForm.get('title').touched">Enter
+                                    Tittle.</small>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="type == 2">
+                            <div class="col col-md-12 p-2">
+                                <label>Employment Role</label>
+                                <select class="form-control">
+                                    <option selected disabled hidden>Select Employment Role</option>
+                                    <option value="Full-time">Full-time</option>
+                                    <option value="Part-Time">Part-Time</option>
+                                    <option value="Self-Employed">Self-Employed</option>
+                                    <option value="Freelance">Freelance</option>
+                                    <option value="Trainee">Trainee</option>
+                                    <option value="Internship">Internship</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-md-12 p-2">
+                                <label>Company Name <span class="mandatory">*</span></label>
+                                <div class="form-control">
+                                    <img [src]="experianceForm.value.companyLogo" style="width: 20px;">
+                                    <input type="text" class="school" (blur)="onBlur()" (focus)="onFocus(4)"
+                                        (keyup)="search($event)" placeholder="eg. Tablabs Technology"
+                                        formControlName="companyName">
+                                </div>
+                                <small class="text-danger"
+                                    *ngIf="experianceForm.get('companyName').invalid && experianceForm.get('companyName').touched">Select
+                                    Company.</small>
+                                <div class="card" *ngIf="showList == 4 && searchList.length > 0">
+                                    <li *ngFor="let item of searchList" (click)="selectItem(4,item)"><img
+                                            [src]="item.logo" style="width: 25px;">&nbsp;{{item.name}}</li>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-md-12 p-2">
+                                <label>Location<span class="mandatory">*</span></label>
+                                <input type="text" placeholder="Location" formControlName="jobLocation"
+                                    class="form-control">
+                                <small class="text-danger"
+                                    *ngIf="experianceForm.get('jobLocation').invalid && experianceForm.get('jobLocation').touched">Enter
+                                    Location.</small>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-md-12 p-2">
+                                <input style="width: 30px;" type="checkbox" formControlName="isWorking"><span>I am
+                                    currently
+                                    Working</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-xl-3 p-2">
+                                <label>Start Date <span class="mandatory">*</span></label>
+                                <select class="form-control" formControlName="startYear">
+                                    <option value='' selected disabled hidden>Select Start year</option>
+                                    <option [value]="item" *ngFor="let item of yeaList">{{item}}</option>
+                                </select>
+                            </div>
+                            <div class="col col-xl-3 p-3">
+                                <label></label>
+                                <select class="form-control" formControlName="startMonth">
+                                    <option value="" selected hidden disabled>Start Month</option>
+                                    <option [value]="item" *ngFor="let item of monthList">{{item}}</option>
+                                </select>
+                            </div>
+                            <div class="col col-xl-3 p-2" *ngIf="!this.experianceForm.value.isWorking">
+                                <label>End Date <span class="mandatory">*</span></label>
+                                <select class="form-control" formControlName="endYear">
+                                    <option value='' selected disabled hidden>Select End year</option>
+                                    <option [value]="item" *ngFor="let item of yeaList">{{item}}</option>
+                                </select>
+                            </div>
+                            <div class="col col-xl-3 p-3" *ngIf="!this.experianceForm.value.isWorking">
+                                <label></label>
+                                <select class="form-control" formControlName="endMonth">
+                                    <option value="" selected hidden disabled>End Month</option>
+                                    <option [value]="item" *ngFor="let item of monthList">{{item}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-md-12 p-2">
+                                <textarea formControlName="description" type="text" placeholder="Description"
+                                    class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-outline-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="verifyModel" data-backdrop="static" data-keyboard="false" #content role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <img src="assets/img/tenor.gif" />
+                    <h4>Hello <b> {{userInfo?.firstName}} {{userInfo?.lastName}}</b>,</h4>
+                    <h4> <i> You already verified your account.</i></h4>
+                    <div>
+                        <button class="btn btn-primary" (click)="goToLogin()">Back to login</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <button hidden #model type="button" class="btn btn-primary" data-toggle="modal" data-target="#verifyModel"></button>

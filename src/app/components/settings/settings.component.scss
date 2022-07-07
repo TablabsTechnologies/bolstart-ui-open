@@ -1,0 +1,30 @@
+.vl {
+  border-right: 1px solid darkgray;
+  height: 500px;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+.nav-link.active {
+  color: #293266 !important;
+  transform: scale(1.1);
+  font-weight: bold;
+  .fa-angle-right {
+    font-size: 30px;
+    padding-left: 20px;
+    transition: 0.5s all;
+  }
+}
+.nav-link {
+  color: black !important;
+  text-align: left !important;
+  .fa-angle-right {
+    transform: translate(10px, 4px);
+  }
+}
+.nav-link:hover {
+  color: #293266 !important;
+  transform: scale(1.1);
+}
+.btn-danger {
+  background: red;
+}

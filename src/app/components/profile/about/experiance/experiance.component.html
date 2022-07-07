@@ -1,0 +1,152 @@
+<div class="card p-4">
+    <div class="row">
+        <div class="col-11 col-xs-10">
+            <h5>Experience</h5>
+        </div>
+        <div class="col-1 col-xs-2">
+            <i *ngIf="userInfo?.isOwener" class="fa fa-plus-circle fa-2x" aria-hidden="true"
+                data-target="#experianceModel" data-toggle="modal" (click)="newOpen()"></i>
+        </div>
+    </div>
+
+    <div *ngFor="let item of experianceList;let i = index; let last = last" class="mt-3">
+        <div class="dsplay-flex"><img style="width:45px" [src]="item.companyLogo" />&nbsp;<h6
+                [routerLink]="['/company/companyinfo/publish']" [queryParams]="{companyId:item.companyId}">
+                {{item.companyName}}<br />
+            </h6>
+            <div *ngIf="userInfo?.isOwener" class="deleteIcon">
+                <span class="add-icon"><i class="fa fa-edit" (click)="selecetedItem(item,i)"
+                        data-target="#experianceModel" data-toggle="modal"></i></span> <br />
+                <span class="add-trash"><i class="fa fa-trash" (click)="deleteExp(item,i)"></i></span>
+            </div>
+        </div>
+        <ul class="events">
+            <li>
+                <time></time>
+                <span><strong>{{item.title}}</strong> {{item.startYear}} {{item.startMonth}}
+                    <label *ngIf="!item.isWorking"> - {{item.endYear}}
+                        {{item.endMonth}} </label> <label style="font-size: 1em;" *ngIf="item.isWorking">Currently
+                        Working</label> </span>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- ================  Experience Model  ======================= -->
+<div class="modal fade" id="experianceModel" role="dialog">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-Custheader p-2">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h6 class="modal-title">Add Experience</h6>
+            </div>
+            <div class="modal-body">
+                <form class="p-2" [formGroup]="experianceForm" (submit)="expSubmit()">
+                    <div class="row">
+                        <div class="col col-md-12 p-2">
+                            <label>Title<span class="mandatory">*</span></label>
+                            <input type="text" class="form-control" placeholder="eg. Sales Manager"
+                                formControlName="title">
+                            <small class="text-danger"
+                                *ngIf="experianceForm.get('title').invalid && experianceForm.get('title').touched">Enter
+                                Title.</small>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="type == 2">
+                        <div class="col col-md-12 p-2">
+                            <label>Employment Role</label>
+                            <select class="form-control">
+                                <option value="" selected disabled hidden>Select Employment Role</option>
+                                <option value="Full-time">Full-time</option>
+                                <option value="Part-Time">Part-Time</option>
+                                <option value="Self-Employed">Self-Employed</option>
+                                <option value="Freelance">Freelance</option>
+                                <option value="Trainee">Trainee</option>
+                                <option value="Internship">Internship</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-12 p-2">
+                            <label>Company Name <span class="mandatory">*</span></label>
+                            <div class="form-control">
+                                <img [src]="experianceForm.value.companyLogo" style="width: 20px;">
+                                <input type="text" (blur)="onBlur()" (focus)="onFocus(4)" (keyup)="search($event)"
+                                    class="school" placeholder="eg. Tablabs Technology" formControlName="companyName">
+                            </div>
+                            <small class="text-danger"
+                                *ngIf="experianceForm.get('companyName').invalid && experianceForm.get('companyName').touched">Select
+                                Company.</small>
+                            <div class="card" *ngIf="showList == 4">
+                                <div *ngIf="searchList.length > 0">
+                                    <li *ngFor="let item of searchList" (click)="selectItem(item)"><img
+                                            [src]="item.logo" style="width: 25px;">&nbsp;{{item.name}}</li>
+                                </div>
+                                <div *ngIf="searchList.length == 0">
+                                    <label class="p-3">Company not found</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-12 p-2">
+                            <label>Location <span class="mandatory">*</span></label>
+                            <input type="text" placeholder="Location" formControlName="jobLocation" class="form-control"
+                                (blur)="onBlur()" (focus)="onFocus(5)" (keyup)="search($event)">
+                            <div class="card" *ngIf="showList == 5 && searchList.length > 0">
+                                <li *ngFor="let item of searchList" (click)="selectedCity(item)"><img [src]="item.logo"
+                                        style="width: 25px;">&nbsp;{{item.name}}</li>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-12 p-2">
+                            <input style="width: 30px;" type="checkbox" formControlName="isWorking"><span>I am
+                                currently
+                                Working</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-xl-3 p-2">
+                            <label>Start Date <span class="mandatory">*</span></label>
+                            <select class="form-control" formControlName="startYear">
+                                <option value='' selected disabled hidden>Start year</option>
+                                <option [value]="item" *ngFor="let item of yeaList">{{item}}</option>
+                            </select>
+                        </div>
+                        <div class="col col-xl-3 p-3">
+                            <label></label>
+                            <select class="form-control" formControlName="startMonth">
+                                <option value='' selected hidden disabled>Start Month</option>
+                                <option [value]="item" *ngFor="let item of monthList">{{item}}</option>
+                            </select>
+                        </div>
+                        <div class="col col-xl-3 p-2" *ngIf="!this.experianceForm.value.isWorking">
+                            <label>End Date <span class="mandatory">*</span></label>
+                            <select class="form-control" formControlName="endYear">
+                                <option value='' selected disabled hidden>Select End year</option>
+                                <option [value]="item" *ngFor="let item of yeaList">{{item}}</option>
+                            </select>
+                        </div>
+                        <div class="col col-xl-3 p-3" *ngIf="!this.experianceForm.value.isWorking">
+                            <label></label>
+                            <select class="form-control" formControlName="endMonth">
+                                <option value='' selected hidden disabled>End Month</option>
+                                <option [value]="item" *ngFor="let item of monthList">{{item}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-12 p-2">
+                            <textarea formControlName="description" type="text" placeholder="Description"
+                                class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-outline-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,234 @@
+<div class="container">
+    <div class="card p-4">
+        <div id="stepper1" class="bs-stepper">
+            <div class="bs-stepper-header">
+                <div class="step" data-target="#test-l-1">
+                    <button class="step-trigger">
+                        <span class="bs-stepper-circle">1</span>
+                        <span class="bs-stepper-label">Startup</span>
+                    </button>
+                </div>
+                <div class="line"></div>
+                <div class="step" data-target="#test-l-2">
+                    <button class="step-trigger">
+                        <span class="bs-stepper-circle">2</span>
+                        <span class="bs-stepper-label">Category</span>
+                    </button>
+                </div>
+                <div class="line"></div>
+                <div class="step" data-target="#test-l-3">
+                    <button class="step-trigger">
+                        <span class="bs-stepper-circle">3</span>
+                        <span class="bs-stepper-label">Contact Info</span>
+                    </button>
+                </div>
+            </div>
+            <div class="bs-stepper-content">
+                <form [formGroup]="companyForm">
+                    <div id="test-l-1" class="content">
+                        <div class="row pt-2">
+
+                            <div class="col col-md-6">
+                                <label>Company Name <span class="mandatory">*</span> </label>
+                                <input class="form-control" placeholder="Company Name" formControlName="name">
+                                <small class="text-danger"
+                                    *ngIf="companyForm.get('name').invalid && companyForm.get('name').touched">Enter
+                                    Company Name.</small>
+                            </div>
+                            <div class="col col-md-6">
+                                <label>Website Url <span class="mandatory">*</span></label>
+                                <input class="form-control" type="url" placeholder="Website Url"
+                                    formControlName="websiteLink">
+                                <small class="text-danger"
+                                    *ngIf="companyForm.get('websiteLink').invalid && companyForm.get('websiteLink').touched">Enter
+                                    Website URL.</small>
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="col col-md-6">
+                                <label>stages <span class="mandatory">*</span></label>
+                                <select class="form-control" formControlName="stages">
+                                    <option value="" selected hidden disabled>Select Stages</option>
+                                    <option value="Bootstrapped">Bootstrapped</option>
+                                    <option value="Pre-Seed">Pre-Seed</option>
+                                    <option value="Seed">Seed</option>
+                                    <option value="Series A">Series A</option>
+                                    <option value="Series B">Series B</option>
+                                    <option value="Series c">Series C</option>
+                                    <option value="Series D">Series D</option>
+                                    <option value="Series E">Series E</option>
+                                    <option value="Series F">Series F</option>
+                                    <option value="Series G">Series G</option>
+                                    <option value="Pre-IPO">Pre-IPO</option>
+                                    <option value="IPO"> IPO</option>
+                                    <option value="Seed">Seed</option>
+                                    <option value="Pre series">Pre series</option>
+                                </select>
+                                <small class="text-danger"
+                                    *ngIf="companyForm.get('stages').invalid && companyForm.get('stages').touched">Select
+                                    Stages.</small>
+                            </div>
+                            <div class="col col-md-6">
+                                <label>Social Media URL <span class="mandatory">*</span></label>
+                                <div>
+                                    <input class="form-control" type="url" placeholder="Social Media URL"
+                                        formControlName="profile_url">
+                                    <small class="text-danger"
+                                        *ngIf="companyForm.get('profile_url').invalid && companyForm.get('profile_url').touched">Social
+                                        Media URL.</small>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="row pt-2">
+                            <div class="col col-md-6">
+                                <label>Short Description <span class="mandatory">*</span></label>
+                                <textarea class="form-control" style="max-height: 125px;" placeholder="description"
+                                    formControlName="description"></textarea>
+                                <small class="text-danger"
+                                    *ngIf="companyForm.get('description').invalid && companyForm.get('description').touched">Enter
+                                    Short Description</small>
+                            </div>
+                            <div class="col col-md-3">
+                                <label>Company Logo <span class="mandatory">*</span></label>
+                                <div>
+                                    <img class="logo" [src]="companyForm.value.logo">
+                                    <i class="fa fa-camera fab center" (click)="getImage(2)"></i>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="text-right">
+                            <button (click)="next()" class="btn btn-primary">Next</button>
+                        </div>
+
+                    </div>
+
+                    <div id="test-l-2" class="content">
+                        <div class="row pt-2">
+
+                            <div class="col col-md-6">
+                                <label>Industry <span class="mandatory">*</span></label>
+                                <select class="form-control" formControlName="industry">
+                                    <option value="" selected hidden disabled>Select Industry</option>
+                                    <option *ngFor="let item of industryList" [value]="item">{{item}}</option>
+                                </select>
+                                <small class="text-danger"
+                                    *ngIf="companyForm.get('industry').invalid && companyForm.get('industry').touched">Select
+                                    Industry</small>
+                            </div>
+                            <div class="col col-md-6">
+                                <label>Company Type <span class="mandatory">*</span></label>
+                                <select class="form-control" formControlName="company_type">
+                                    <option value="" selected hidden disabled>Company Type</option>
+                                    <option value="Public">Public</option>
+                                    <option value="Private">Private</option>
+                                </select>
+                                <small class="text-danger"
+                                    *ngIf="companyForm.get('company_type').invalid && companyForm.get('company_type').touched">Select
+                                    Company Type</small>
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="col col-3">
+                                <label>Services</label>
+                                <input class="form-control" placeholder="Enter Service" formControlName="services">
+
+                            </div>
+                            <div class="col col-2 pt-4">
+                                <label></label>
+                                <button class="btn btn-secondary" (click)="addService()">Add</button>
+                            </div>
+                            <div class=" col col-md-7 pt-5">
+                                <div class="chip" *ngFor="let item of serviceList;let i = index;">
+                                    {{item}} &nbsp; <i class="fa fa-times" aria-hidden="true"
+                                        (click)="removeTag(i)"></i>
+                                </div> &nbsp;
+                            </div>
+                        </div>
+
+                        <div class="text-right">
+                            <button (click)="next()" class="btn btn-primary">Next</button>
+                        </div>
+
+                    </div>
+
+                    <div id="test-l-3" class="content">
+                        <div class="row pt-2">
+                            <div class="col col-md-6">
+                                <label>Email <span class="mandatory">*</span></label>
+                                <input class="form-control" placeholder="Enter Email" formControlName="contactEmail">
+                                <small class="text-danger"
+                                    *ngIf="companyForm.get('contactEmail').invalid && companyForm.get('contactEmail').touched">Enter
+                                    Valid Email id.</small>
+                            </div>
+                            <div class="col col-md-6">
+                                <label>Mobile Number <span class="mandatory">*</span></label>
+                                <div style="display: flex;">
+                                    <select class="form-control" style="width: 65px;">
+                                        <option>+91</option>
+                                        <option>+1</option>
+                                    </select> &nbsp;
+                                    <input class="form-control" placeholder="Enter mobile number"
+                                        formControlName="contactNumber">
+
+                                </div>
+                                <small class="text-danger"
+                                    *ngIf="companyForm.get('contactNumber').invalid && companyForm.get('contactNumber').touched">Enter
+                                    Mobile Number.</small>
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="col col-md-4">
+                                <label>Country <span class="mandatory">*</span></label>
+                                <select class="form-control" formControlName="country" (change)="selectCountry()">
+                                    <option value='' selected hidden disabled>select country
+                                    </option>
+                                    <option [value]='item.name' *ngFor="let item of countryList">{{item.name}}
+                                    </option>
+                                </select>
+                                <small class="text-danger"
+                                    *ngIf="companyForm.get('country').invalid && companyForm.get('country').touched">Select
+                                    Country.</small>
+                            </div>
+                            <div class="col col-md-4">
+                                <label>States/Union territories <span class="mandatory">*</span></label>
+                                <select class="form-control" formControlName="state" (change)="selectState()">
+                                    <option value='' selected hidden disabled>select States/Union territory
+                                    </option>
+                                    <option [value]='item.name' *ngFor="let item of stateList">{{item.name}}
+                                    </option>
+                                </select>
+                                <small class="text-danger"
+                                    *ngIf="companyForm.get('state').invalid && companyForm.get('state').touched">Select
+                                    States/Union territories.</small>
+                            </div>
+                            <div class="col col-md-4">
+                                <label>City <span class="mandatory">*</span></label>
+                                <select class="form-control" formControlName="city">
+                                    <option value='' selected hidden disabled>select States/Union territory
+                                    </option>
+                                    <option [value]='item.name' *ngFor="let item of cityList">{{item.name}}
+                                    </option>
+                                </select>
+                                <small class="text-danger"
+                                    *ngIf="companyForm.get('city').invalid && companyForm.get('city').touched">Select
+                                    city.</small>
+                            </div>
+                        </div>
+
+
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary mt-5" (click)="savCompany()">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<ngx-photo-editor [imageChanedEvent]="imageChangedEvent" (imageCropped)="imageCropped($event)" [viewMode]="1"
+    [aspectRatio]="1/1" [darkTheme]="false" [resizeToWidth]="200" [resizeToHeight]="200">
+</ngx-photo-editor>
+<input style="display: none;" type="file" accept="image/*" #imagePicker (change)="fileChangeEvent($event)" />

@@ -1,0 +1,24 @@
+<div class="card position">
+    <div class="card-header text-center" (click)="GoToOwnerProfile()">
+        <img class="profile" [src]="userInfo?.profilePicture">
+        <h6>{{userInfo?.firstName}} {{userInfo?.lastName}}</h6>
+        <label>{{userInfo?.headline}}</label>
+    </div>
+    <hr>
+    <div class="p-3" [routerLink]="['/profile/connections']" [queryParams]="{ visit: userInfo?.id}">
+        <label class="li-label">My
+            Connection</label> &nbsp;<span class="count">{{userInfo?.connectionCount}}</span>
+    </div>
+</div>
+<div class="card company-model" *ngIf="this.companyDetail?.id != null">
+    <h6 style="padding: 5px;">My Company</h6>
+    <div class="card-header text-center" (click)="GoToCompanyDetail()">
+        <img class="company" [src]="companyDetail?.logo">
+        <h6>{{companyDetail?.name}} ({{companyDetail?.company_type}})</h6>
+        <label>{{companyDetail?.industry}}</label>
+    </div>
+    <hr>
+    <div class="p-3">
+        <a href="//{{companyDetail?.websiteLink}}" target="_blank" class="connection">{{companyDetail?.websiteLink}}</a>
+    </div>
+</div>

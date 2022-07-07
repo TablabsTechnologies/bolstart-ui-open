@@ -1,0 +1,344 @@
+<div class="main-p" style="overflow: hidden">
+  <div class="innter_p">
+    <div class="nvbar">
+      <div class="nav-inn">
+        <div class="tooltips">
+          <div style="display: flex; align-items: center;">
+
+            <mat-icon (click)="toggle()" class="search-icon" class="searchI">search</mat-icon> <span (click)="toggle()">
+              Job title / Description </span> &nbsp;<img src="assets/chevron-down.svg" class="img-css"
+              [ngClass]="{'img-css-i' : !isDisplay}" (click)="toggle()" alt="">
+
+          </div>
+          <span class="tooltiptexts" [hidden]="isDisplay">
+            <div>
+              <span class="innterSpan">Senior web analyst</span>
+              <span class="innterSpan">acc</span>
+              <span class="innterSpan">Senior web analyest</span>
+              <span class="innterSpan">Senior web analyest</span>
+            </div>
+
+            <div style="margin-top: 12px">
+              <span class="innterSpan">Senior web analyst</span>
+              <span class="innterSpan">acc</span>
+              <span class="innterSpan">Senior web analyest</span>
+              <span class="innterSpan">Senior web analyest</span>
+            </div>
+          </span>
+        </div>
+
+        <div class="tooltips2">
+          <div style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 10px;font-weight: 500;
+            " (click)="toggle2()">
+            <mat-icon>card_travel</mat-icon> Job Type&nbsp;<img src="assets/chevron-down (3).svg" class="img-css"
+              [ngClass]="{'img-css-i' : !isDisplay2}" (click)="toggle()" alt="">
+            <img src="./../../assets/chevron-down (1).svg" alt="" />
+          </div>
+          <span class="tooltiptexts2" [hidden]="isDisplay2">
+            <p>Part Time</p>
+            <p>Full Time</p>
+          </span>
+        </div>
+
+        <div class="tooltips3">
+          <div (click)="toggle3()"> Stipend&nbsp;<img src="assets/chevron-down (3).svg" class="img-css"
+              [ngClass]="{'img-css-i' : !isDisplay3}" alt="">
+          </div>
+          <span class="tooltiptexts3" [hidden]="isDisplay3">
+            <p>Part Time</p>
+            <p>Full Time</p>
+          </span>
+        </div>
+
+        <div class="tooltips4" (click)="toggle4()">
+          <img src="assets/more_vert_black_24dp.svg" class="img-css" alt="">
+          Advanced &nbsp;<img src="assets/chevron-down (3).svg" class="img-css" [ngClass]="{'img-css-i' : !isDisplay4}"
+            alt="">
+        </div>
+
+        <button mat-raised-button class="btn_s">Submit</button>
+      </div>
+      <div class="navCollaps" *ngIf="isDisplay4 == true">
+        <div class="tooltips5" (click)="toggle5()">
+          <div class="title-name">
+            <img src="assets/Location (1).svg" alt="" /> Location<img src="assets/chevron-down (3).svg" class="img-css"
+              [ngClass]="{'img-css-i' : !isDisplay5}" alt="">
+            <img src="./../../assets/chevron-down (1).svg" alt="" />
+          </div>
+          <span class="tooltiptexts5" [hidden]="isDisplay5">
+
+            <div class="searchBar">
+              <input id="searchQueryInput" type="text" name="searchQueryInput" placeholder="Search" value="" />
+            </div>
+            <p>Mumbai</p>
+            <p>Nagpur</p>
+          </span>
+        </div>
+
+        <div class="tooltips6" (click)="toggle6()">
+          <div class="title-name">
+            <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg
+              enable-background="new 0 0 91 91" height="30px" id="Layer_1" version="1.1" viewBox="0 0 91 91"
+              width="30px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+              <g>
+                <rect fill="#293266" height="6.26" width="3.4" x="31.019" y="43.344" />
+                <rect fill="#293266" height="6.259" width="3.4" x="31.019" y="55.862" />
+                <rect fill="#293266" height="6.259" width="3.4" x="31.019" y="30.825" />
+                <rect fill="#293266" height="6.259" width="3.4" x="41.452" y="55.862" />
+                <rect fill="#293266" height="6.26" width="3.4" x="41.452" y="43.344" />
+                <rect fill="#293266" height="6.259" width="3.4" x="41.452" y="30.825" />
+                <rect fill="#293266" height="3.4" width="6.652" x="60.89" y="50.561" />
+                <rect fill="#293266 height=" 3.4" width="6.652" x="60.89" y="58.906" />
+                <path
+                  d="M56.331,72.315h12.191c3.711,0,6.732-3.021,6.732-6.733V40.709l-18.924-0.003V18.757H19.544v53.559h33.387   H56.331z M71.854,44.109v21.473c0,1.838-1.496,3.333-3.332,3.333H56.331v-24.81L71.854,44.109z M22.944,68.915V22.157h29.986   v18.548v28.209H22.944z"
+                  fill="#293266" />
+              </g>
+            </svg> Industry&nbsp;<img src="assets/chevron-down (3).svg" class="img-css"
+              [ngClass]="{'img-css-i' : !isDisplay6}" alt="">
+            <img src="./../../assets/chevron-down (1).svg" alt="" />
+          </div>
+          <span class="tooltiptexts6" [hidden]="isDisplay6">
+            <div class="searchBar">
+              <input id="searchQueryInput" type="text" name="searchQueryInput" placeholder="Search" value="" />
+            </div>
+            <p>Telecom</p>
+            <p>Healthcare</p>
+
+          </span>
+        </div>
+
+        <div class="tooltips7" (click)="toggle7()">
+          <div class="title-name">
+            <!-- <img src="assets/language_black_24dp.svg" alt="" />  -->
+            <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg
+              enable-background="new 0 0 50 50" height="20px" id="Layer_1" version="1.1" viewBox="0 0 50 50"
+              width="20px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+              <rect fill="none" height="50" width="50" />
+              <circle cx="25" cy="25" fill="none" r="24" stroke="#293266" stroke-linecap="round" stroke-miterlimit="10"
+                stroke-width="2" />
+              <ellipse cx="25" cy="25" fill="none" rx="12" ry="24" stroke="#293266" stroke-linecap="round"
+                stroke-miterlimit="10" stroke-width="2" />
+              <path d="M6.365,40.438C10.766,37.729,17.479,36,25,36  c7.418,0,14.049,1.682,18.451,4.325" fill="none"
+                stroke="#293266" stroke-miterlimit="10" stroke-width="2" />
+              <path d="M43.635,9.563C39.234,12.271,32.521,14,25,14  c-7.417,0-14.049-1.682-18.451-4.325" fill="none"
+                stroke="#293266" stroke-miterlimit="10" stroke-width="2" />
+              <line fill="none" stroke="#293266" stroke-miterlimit="10" stroke-width="2" x1="1" x2="49" y1="25"
+                y2="25" />
+              <line fill="none" stroke="#293266" stroke-miterlimit="10" stroke-width="2" x1="25" x2="25" y1="1"
+                y2="49" />
+            </svg>
+            Domain&nbsp;<img src="assets/chevron-down (3).svg" class="img-css" [ngClass]="{'img-css-i' : !isDisplay7}"
+              alt="">
+            <img src="./../../assets/chevron-down (1).svg" alt="" />
+          </div>
+          <span class="tooltiptexts7" [hidden]="isDisplay7">
+            <p>UI UX</p>
+            <p>Graphic Design</p>
+            <p>Web developer</p>
+
+          </span>
+        </div>
+      </div>
+      <!-- <div style="height: 70px;border: 1px solid black;"></div> -->
+    </div>
+    <div class="jobseq">
+      <p class="title-side-card">Showing {{ joblist.data.length }} Jobs</p>
+
+      <div class="seq">
+        <div class="sideseq">
+          <div class="side_card">
+            <p class="t_name">Quick actions</p>
+            <span class="discrip">Use these option to boosts.</span>
+            <div class="button-al">
+              <div type="button" id="btn-t">Saved Jobs</div>
+              <div type="button" id="btn-t">My Jobs</div>
+            </div>
+            <div class="button-al">
+              <div type="button" id="btn-t" routerLink="/jobs/job-post-form" >Create Job</div>
+            </div>
+          </div>
+          <p class="recnet">Recent Job Searches</p>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <p class="form-check-label" for="flexCheckDefault"
+              style="padding-left:0px ;display: flex;justify-content: space-between;">
+              Angular js <span class="notify">21</span>
+            </p>
+          </div>
+
+
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <p class="form-check-label" for="flexCheckChecked"
+              style="padding-left:0px ;display: flex;justify-content: space-between;">
+              Angular developer <span class="notify">26</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="cardseq">
+          <div class="card" *ngFor="let item of joblist.data">
+            <span class="tooltiptext">
+              <div class="title-row">
+                <span class="jobD">Job Description</span>
+                <span>
+                  <!-- <i class="fa fa-bookmark-o"></i> -->
+                  <svg (click)="addToSaveList(item.id)" style="margin-right: 10px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
+                    <path
+                      d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" />
+                  </svg>
+                </span>
+              </div>
+
+              <div class="title-row" style="margin-top: 10px;">
+                <div>
+                  <div class="nameT-1">start date</div>
+                  <div class="value-c">{{ item.startDate }}</div>
+                </div>
+                <div>
+                  <div class="nameT">stipend</div>
+                  <div class="value-c">TODO /month</div>
+                </div>
+
+                <div>
+                  <div class="nameT">Employee type</div>
+                  <div class="value-c">fulltime</div>
+                </div>
+              </div>
+
+              <div class="discription-seq">
+                <span>
+                  {{ item.jobDescription }}
+                 
+                </span>
+              </div>
+            </span>
+            <div class="img-and-title card-i">
+              <img src="assets/Screenshot 2022-03-15 204058.png" alt="" class="hight-w" />
+              <div class="text-seq">
+                <span class="first-tag">
+                 {{ item.jobTitle}}
+                </span>
+                <span class="secund-tag">
+                  {{ item.location}}
+                </span>
+                <span class="dis">
+                  {{ item.startDate }} |
+                  TODO Applicants</span>
+              </div>
+            </div>
+            <div class="category">
+              <span>Full time New</span>
+              <span>Remote new</span>
+              <span>UI/UX new</span>
+            </div>
+
+            <div class="buttons">
+              <!-- <p class="myDIV" (click)="openBottomSheet()">
+                Read More <span class="hide">>></span>
+              </p>
+               -->
+              <button class="button-i" (click)="openBottomSheet(item.id)"><span class="button-i-text">Read More</span></button>
+
+
+              <span class="Quick" (click)="openDialog()">
+                Quick Apply
+                <img src="assets/icons/ray.png" width="15px" class="hideIcon" alt="" /></span>
+            </div>
+          </div>
+
+          <!-- <div class="card" *ngFor="let item of arr">
+            <span class="tooltiptext">
+              <div class="title-row">
+                <span class="jobD">Job Description</span>
+                <span>
+               
+                  <svg style="margin-right: 10px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
+                    <path
+                      d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" />
+                  </svg>
+                </span>
+              </div>
+
+              <div class="title-row" style="margin-top: 10px;">
+                <div>
+                  <div class="nameT-1">start date</div>
+                  <div class="value-c">5/05/2022</div>
+                </div>
+                <div>
+                  <div class="nameT">stipend</div>
+                  <div class="value-c">2022/month</div>
+                </div>
+
+                <div>
+                  <div class="nameT">Employee type</div>
+                  <div class="value-c">fulltime</div>
+                </div>
+              </div>
+
+              <div class="discription-seq">
+                <span>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab
+                  consequuntur adipisci repudiandae rem odit, dolorem, cum
+                  deleniti reiciendis quam sae
+                  consequuntur adipisci repudiandae rem odit, dolorem, cum
+                  deleniti reiciendis quam sae consequuntur adipisci repudiandae rem odit, dolorem, cum
+                  deleniti reiciendis quam sae
+                </span>
+              </div>
+            </span>
+            <div class="img-and-title card-i">
+              <img src="{{ item.Img }}" alt="" class="hight-w" />
+              <div class="text-seq">
+                <span class="first-tag">
+                  {{ item.title }}
+                </span>
+                <span class="secund-tag">
+                  {{ item.title2 }}
+                </span>
+                <span class="dis">
+                  {{ item.day }} day ago |
+                  {{ item.applications }} Applicants</span>
+              </div>
+            </div>
+            <div class="category">
+              <span>Full time</span>
+              <span>Remote</span>
+              <span>UI/UX</span>
+            </div>
+
+            <div class="buttons">
+              
+              <button class="button-i" (click)="openBottomSheet()"><span class="button-i-text">Read More</span></button>
+
+
+              <span class="Quick" (click)="openDialog()">
+                Quick Apply
+                <img src="assets/icons/ray.png" width="15px" class="hideIcon" alt="" /></span>
+            </div>
+          </div> -->
+        </div>
+      </div>
+     
+    </div>
+  </div>
+</div>

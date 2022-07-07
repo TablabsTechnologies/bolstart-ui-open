@@ -1,0 +1,49 @@
+.profile {
+  object-fit: cover;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  border: 2px solid var(--primary);
+}
+h6 {
+  margin-bottom: 2px !important;
+}
+.li-label {
+  font-weight: bold;
+  color: rgb(148, 147, 147);
+}
+.count {
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #293266;
+  float: right;
+  padding: 3px;
+}
+
+.job-wrap {
+  border: 1px solid darkgray;
+  border-radius: 5px;
+  .job-inner {
+    background: #293266;
+    padding: 1em;
+    font-size: 2rem;
+    color: white;
+  }
+
+  .card {
+    margin: 16px;
+    border: 1px solid #293266;
+    border-radius: 1rem;
+    padding: 5px;
+    .sub-header {
+      font-size: 14px;
+      color: black;
+    }
+    img {
+      width: 90%;
+      border: 1px solid #293266;
+      object-fit: cover;
+      border-radius: 1rem;
+    }
+  }
+}

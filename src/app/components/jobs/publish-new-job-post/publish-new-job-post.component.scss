@@ -1,0 +1,102 @@
+.main {
+  position: absolute;
+  top: 100px;
+  left: 276px;
+  background: var(--background) 0% 0% no-repeat padding-box;
+  background: #f3f2f0 0% 0% no-repeat padding-box;
+  .main h1 {
+    width: 258px;
+    height: 33px;
+    letter-spacing: var(--unnamed-character-spacing-0-1);
+    color: var(--unnamed-color-171725);
+    text-align: left;
+    letter-spacing: 0.1px;
+    color: #171725;
+  }
+  .card {
+    display: flex;
+    flex-direction: row;
+  }
+  .card .blue-box {
+    width: 390px;
+    height: 688px;
+    background: var(--theme) 0% 0% no-repeat padding-box;
+    background: #293266 0% 0% no-repeat padding-box;
+    border-radius: 3px;
+  }
+  .card .white-box {
+    width: 854px;
+    height: 688px;
+    padding: 31px 27px;
+    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    box-shadow: 2px 3px 10px #7777771a;
+    border-radius: 3px;
+    font: var(--unnamed-font-style-normal) normal
+      var(--unnamed-font-weight-normal) var(--unnamed-font-size-14) /
+      var(--unnamed-line-spacing-21) var(--unnamed-font-family-poppins-semibold);
+    letter-spacing: var(--unnamed-character-spacing-0-1);
+    color: var(--unnamed-color-2a3363);
+    text-align: left;
+    font: normal normal normal 14px/21px Poppins-SemiBold;
+    letter-spacing: 0.1px;
+    color: #2a3363;
+  }
+}
+
+.contentHolder {
+    text-align: center;
+    height: 68%;
+    width: 390px;
+  }
+//   .content {
+//     text-align: center;
+//     padding-top: 50px;
+//   }
+  .didO {
+    color: white;
+    // line-height: 10px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    font-size: 16px;
+  }
+  .imgSeq {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .widthOfText {
+    color: white;
+    font-size: 12px;
+    text-align: start;
+    width: 75%;
+    margin: 0 auto;
+    line-height: 10px;
+    letter-spacing: 0.09px;
+  }
+  .margin-btm {
+    padding-bottom: 15px;
+  }
+  .footerContent {
+    text-align: center;
+    line-height: 5px;
+    font-size: 12px;
+    color: rgb(207, 206, 206);
+  }  
+  .slectCel {
+    border: 2px solid rgb(239, 238, 238);
+    height: 27px;
+    width: 27px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    color: white;
+    align-items: center;
+    cursor: pointer;
+  }
+  .stepCont {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 30px;
+  }
+  

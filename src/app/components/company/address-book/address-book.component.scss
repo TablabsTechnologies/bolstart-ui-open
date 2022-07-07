@@ -1,0 +1,75 @@
+.card-header {
+  display: inline-flex;
+  .head {
+    flex: 1;
+  }
+  .view {
+    color: var(--primary);
+    font-weight: bold;
+  }
+}
+li {
+  padding: 5px 5px 5px 5px !important;
+}
+.profile {
+  object-fit: cover;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  border: 2px solid #ffff;
+}
+
+.position {
+  margin: 10px 0px 0px 0px;
+  z-index: 999;
+  height: 500px !important;
+  overflow-y: auto;
+}
+.second {
+  padding-top: 15px;
+}
+.fa-edit {
+  color: var(--primary);
+}
+.groupLabel {
+  font-weight: bold;
+  color: var(--primary);
+}
+.group-section {
+  border-right: 1px solid darkgray;
+}
+.fab-add {
+  padding: 11px;
+  border: 1px solid;
+  border-radius: 32%;
+  font-weight: bold;
+  background: #293266;
+  color: white;
+  cursor: pointer;
+}
+.group-edit {
+  display: inline-flex;
+}
+.add-group {
+  display: inline-flex;
+}
+.add-member {
+  display: inline-flex;
+}
+.selectedLabel {
+  color: #293266;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 950px;
+    margin: 1.75rem auto;
+    margin-top: 2%;
+  }
+  .position {
+    width: 50%;
+  }
+  .modal-sm {
+    width: 25%;
+  }
+}

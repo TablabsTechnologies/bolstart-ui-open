@@ -1,0 +1,21 @@
+<write-post></write-post>
+<button [ngClass]="{inActive: selectedTab == 2}" class="btn btn-primary btn-sm inActive"
+    (click)="getList(1)">Post</button> &nbsp;
+<button [ngClass]="{inActive: selectedTab == 1}" class="btn btn-primary btn-sm" (click)="getList(2)">Updates</button>
+<div *ngIf="postList.length > 0 && selectedTab == 1" class="search-results" infinite-scroll
+    [infiniteScrollDistance]="scrollDistance" (scrolled)="onScrollDown()" [scrollWindow]="false"
+    [infiniteScrollThrottle]="throttle">
+    <post-container *ngFor="let item of postList" [post]="item" [userInfo]="userInfo"></post-container>
+</div>
+<div *ngIf="publishList.length > 0 && selectedTab == 2" class="search-results" infinite-scroll
+    [infiniteScrollDistance]="scrollDistance" (scrolled)="onScrollDown()" [scrollWindow]="false"
+    [infiniteScrollThrottle]="throttle">
+    <publish-container *ngFor="let item of publishList" [publish]="item" [userInfo]="userInfo"></publish-container>
+
+</div>
+<div *ngIf="postList.length == 0 && selectedTab == 1" class="text-center">
+    <img class="notFound" src="assets/img/notfound.png">
+</div>
+<div *ngIf="publishList.length == 0 && selectedTab == 2" class="text-center">
+    <img class="notFound" src="assets/img/notfound.png">
+</div>

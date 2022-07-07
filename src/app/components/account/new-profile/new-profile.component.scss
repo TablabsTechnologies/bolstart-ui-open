@@ -1,0 +1,48 @@
+@media (max-width: 520px) {
+  .bs-stepper .step-trigger {
+    flex-direction: column;
+    padding: 5px;
+    font-size: 12px !important;
+  }
+}
+.list {
+  height: 300px;
+  overflow-y: auto;
+}
+.type:hover {
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  cursor: pointer;
+}
+.selected {
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+.modal-body {
+  height: 500px;
+  overflow-y: auto;
+}
+.line {
+  background: linear-gradient(to right, blue 50%, darkgray 50%);
+  background-size: 200% 100%;
+  background-position: bottom right;
+  transition: all 0.7s ease-out;
+}
+.line1:active {
+  min-height: 2px;
+  background-position: bottom left;
+}
+.line2:active {
+  min-height: 2px;
+  background-position: bottom left;
+}
+.line3:active {
+  min-height: 2px;
+  background-position: bottom left;
+}
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 750px;
+    margin: 1.75rem auto;
+  }
+}

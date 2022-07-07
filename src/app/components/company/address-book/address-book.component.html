@@ -1,0 +1,114 @@
+<div class="card">
+    <div class="card-header">
+        <h6 class="head">Address Book</h6>
+        <label class="view pointer" data-target="#memberList" data-toggle="modal">View All</label>
+    </div>
+    <div class="card-body">
+        <ul>
+            <li *ngFor="let item of groupList" (click)="selectGroup(item)" class="groupLabel pointer"
+                data-target="#memberList" data-toggle="modal">
+                {{item.groupName}}
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="modal fade" id="memberList" role="dialog">
+    <div class="modal-dialog md-lg">
+        <div class="modal-content p-3">
+            <div class="modal-Custheader p-2">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h6 class="modal-title">Address Book</h6>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-4 group-section">
+                        <div class="add-group">
+                            <input class="form-control" [(ngModel)]="groupName" placeholder="Enter New Group"> &nbsp; <i
+                                class="fa fa-plus fab-add" (click)="submitGroup()"></i>
+                        </div>
+                        <hr>
+
+                        <div *ngIf="groupList.length > 0">
+                            <ul>
+                                <li *ngFor="let item of groupList;let i = index;">
+                                    <label class="groupLabel pointer"
+                                        [ngClass]="{selectedLabel: item.groupName == selectedGroup?.groupName}"
+                                        *ngIf="selectedForEdit != i"
+                                        (click)="selectGroup(item)">{{item.groupName}}</label>
+                                    <span class="group-edit" *ngIf="selectedForEdit == i">
+                                        <input [(ngModel)]="item.groupName" class="form-control" /> &nbsp;
+                                        <i class="fa fa-check fab-add" (click)="updateGroupName(item)"></i>
+                                        <i class="fa fa-close fab-add" (click)="onEditGroupName(i)"></i>
+                                    </span>
+                                    <span class="add-trash" *ngIf="selectedForEdit != i"><i class="fa fa-window-close"
+                                            data-toggle="modal" data-target="#deleteModel"
+                                            (click)=" deleteGroup(item.id)"></i>
+                                        &nbsp; <i class="fa fa-edit" (click)="onEditGroupName(i)"></i></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        <div style="padding-top: 11px;">
+                            <label class="groupLabel">{{selectedGroup?.groupName}}</label>
+                        </div>
+                        <hr>
+                        <div *ngIf="selectedGroup != undefined">
+                            <div class="add-member">
+                                <input class="form-control" [(ngModel)]="firstName" (focusout)="hide()"
+                                    (keyup)="getList()" placeholder="First Name">&nbsp;
+                                <input class="form-control" [(ngModel)]="lastName" placeholder="Last Name">&nbsp;
+                                <input style="width: 20rem;" [(ngModel)]="emailId" class="form-control"
+                                    placeholder="Email Id">&nbsp;
+                                <i class="fa fa-plus fab-add" (click)="addGuest()"></i>
+                            </div>
+                            <div class="card position" *ngIf="isShow && memberList.length > 0">
+                                <ul>
+                                    <li *ngFor="let item of memberList">
+                                        <span style="display: flex;" (click)="selectUser(item)">
+                                            <img [src]="item.profilePicture" class="profile" />&nbsp;
+                                            <h6 class="pt-2">
+                                                {{item.firstName}}&nbsp;{{item.lastName}}<br>
+                                                <label style="color: darkgray;">{{item.headline}}</label>
+                                            </h6>
+                                        </span>
+                                        <hr>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <ul>
+                                    <li *ngFor="let item of selectedUserList;let i= index">
+                                        <a><img class="profile" [src]="item.profile_piture" />&nbsp;{{item.firstName}}
+                                            {{item.lastName}}
+                                            <b style="color:#293266 ;">({{item.emailid}})</b></a>
+                                        <span class="add-trash second"><i class="fa fa-trash"
+                                                (click)="deleteMember(i)"></i></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="deleteModel" role="dialog">
+    <div class="modal-dialog  modal-sm">
+        <div class="modal-content p-3">
+            <div class="modal-Custheader p-2">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h6 class="modal-title">Delete Group</h6>
+            </div>
+            <div class="modal-body">
+                <label>Are sure want to delete group</label>
+                <div class="text-right">
+                    <label class="text-info" data-dismiss="modal" aria-label="Close">Cancel</label> &nbsp;
+                    <button class="btn btn-primary" data-dismiss="modal" (click)="confirmDelete()">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

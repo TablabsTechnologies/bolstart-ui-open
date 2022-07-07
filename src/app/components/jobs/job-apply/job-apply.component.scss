@@ -1,0 +1,57 @@
+.job-wrap {
+  border-bottom: 2px solid var(--primary);
+  display: flex;
+  padding-bottom: 15px;
+}
+.second-wrap {
+  border-bottom: 2px solid var(--primary);
+  display: flex;
+  padding: 15px 0;
+}
+.job-select-wrap {
+  flex: 1;
+}
+.btn-job,
+.job-select {
+  margin-inline: 5px;
+  padding: 10px;
+  border: 1px solid #293266;
+  border-radius: 8px;
+}
+.job-select {
+  width: 80%;
+}
+.job-title {
+  background: #293266;
+  color: white;
+}
+.section-first {
+  border-right: 1px solid var(--primary);
+  height: auto;
+}
+.section-second {
+  border-left: 1px solid var(--primary);
+  height: auto;
+}
+
+.card {
+  margin: 16px;
+  border: 1px solid #293266;
+  border-radius: 1rem;
+  padding: 5px;
+  .sub-header {
+    font-size: 14px;
+    color: black;
+  }
+  .profile {
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #293266;
+    height: 5em;
+  }
+}
+.resume-wrap {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--primary);
+}

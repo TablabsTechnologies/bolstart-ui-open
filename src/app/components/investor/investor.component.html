@@ -1,0 +1,28 @@
+<app-header></app-header>
+<section class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Company List</h5>
+                </div>
+                <ul>
+                    <li *ngFor="let item of companyList" class="pointer">
+                        <span style="display: flex;" (click)="goToCompanyDetail(item.id)">
+                            <img [src]="item.logo" class="profile" />&nbsp;
+                            <h6 class="pt-2">
+                                {{item.name}}<br>
+                                <label style="color: darkgray;">{{item.industry}}</label>
+                            </h6>
+                        </span>
+                        <hr>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+</section>

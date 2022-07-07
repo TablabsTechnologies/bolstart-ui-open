@@ -1,0 +1,103 @@
+<app-header></app-header>
+<section class="container">
+    <div class="card">
+        <div class="p-2 count_class">
+            <h3 style="width: 80%;">Perks/Categories</h3>
+            <div>
+                <ul>
+                    <li>
+                        <div class="text-center">
+                            <h6 class="text-primary"> <b>03</b></h6>
+                            <h6>Perks Available</h6>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="text-center">
+                            <h6 class="text-primary"> <b>$9350</b></h6>
+                            <h6>Perks Value</h6>
+                        </div>
+                    </li>
+                    <li>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-body">
+            <table>
+                <tr>
+                    <td>
+                        <img src="assets/logo/Logo - White - CometChat.png">
+                    </td>
+                    <td style="width: 60%;">
+                        <p>
+                            <b>CometChat</b><br />
+                            CometChat enables businesses and developers to add voice, video and text chat to their
+                            mobile apps, web apps and
+                            websites.
+                        </p>
+                    </td>
+                    <td style="display: inline;">
+                        <label class="amount">$3000</label>
+                        <button class="btn btn-primary reedem" (click)="onRedeem('CometChat','3000')">Redeem
+                            Now</button>
+                    </td>
+                </tr>
+                <br>
+                <tr>
+                    <td>
+                        <img style="max-width: 12rem;" src="assets/logo/AWS_Sethu Sathyan.png">
+                    </td>
+                    <td style="width: 60%;">
+                        <p>
+                            <b>AWS</b><br />
+                            AWS program offers:<br>
+
+                            1. $5,000 in AWS Activate Credits valid for 2 years<br>
+                            2. 1 year of AWS Business Support (up to $1,500)<br>
+                            3. 80 credits for self-paced labs<br>
+                            4. Special offers only available to AWS Activate members including discounts, free products,
+                            memberships, services and tools.
+                        </p>
+                    </td>
+                    <td style="display: inline;">
+                        <label class="amount">$5000</label>
+                        <button class="btn btn-primary reedem" (click)="onRedeem('AWS','5000')">Redeem Now</button>
+                    </td>
+                </tr>
+                <br>
+                <tr>
+                    <td>
+                        <img style="max-width: 12rem;" src="assets/logo/Logo Razorpay - Allan Jose.png">
+                    </td>
+                    <td style="width: 60%;">
+                        <p>
+                            <b>Razorpay</b><br />
+                            Razorpay lets you accept payments from customers, automate payouts to vendors & borrow quick
+                            business loans.
+                        </p>
+                    </td>
+                    <td style="display: inline;">
+                        <label class="amount">$1350</label>
+                        <button class="btn btn-primary reedem" (click)="onRedeem('Razorpay','1350')">Redeem Now</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</section>
+<div class="modal fade" id="successModel" role="dialog">
+    <div class="modal-dialog  modal-sm">
+        <div class="modal-content p-3">
+            <div class="modal-Custheader p-2">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h6 class="modal-title">Success</h6>
+            </div>
+            <div class="modal-body">
+                <h6>Mail send successfully.</h6>
+            </div>
+        </div>
+    </div>
+</div>
+<button hidden #model type="button" class="btn btn-primary" data-toggle="modal" data-target="#successModel"></button>

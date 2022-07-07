@@ -1,0 +1,110 @@
+.main {
+    width: 600px;
+    height: auto;
+    /* UI Properties */
+    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border-radius: 20px;
+    //   opacity: 1;
+    //   padding: 20px;
+    box-sizing: border-box;
+      padding: 20px;
+  }
+  
+  .main-fontInputBox {
+    margin-left: 20px;
+  }
+  .fontInputBox {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+    color: #2a3363;
+    opacity: 1;
+  }
+  
+  .apply {
+    width: 142px;
+    height: 38px;
+    border-radius: 19px;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: var(--unnamed-character-spacing-0);
+    letter-spacing: 0px;
+    background-color: #293266;
+    color: #fafafb;
+    opacity: 1;
+    cursor: pointer;
+  }
+  
+  .inputBorder {
+    height: 60px;
+  }
+  
+  .btn-upload {
+    width: 100%;
+    height: 100%;
+  }
+  .color-hr {
+    color: rgb(122, 144, 255);
+  }
+  .custom-file {
+    height: 100%;
+  }
+  .file-select-button,
+  .file-name {
+    display: inline-block;
+    // margin: 8px;
+    width: 100%;
+    border: 1px solid #DDDFE1;
+    box-shadow: none;
+    // height: 100%;
+    height: 50px;
+  }
+  .main-apply {
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Pcontainer {
+    padding: 0px;
+    padding-left: 20px;
+  }
+  .btn-attach {
+    background-color: white;
+  }
+  
+  .Upload {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-d5d5dc);
+    letter-spacing: 0px;
+    color: #d5d5dc;
+    opacity: 1;
+    padding-top: 7px;
+  }
+  
+  ::ng-deep mat-dialog-container {
+    border-radius: 20px !important;
+  }
+  
+  .fileUploader {
+    display: none;
+    background-color: white;
+    border: 1px solid;
+    outline: none !important;
+  }
+  .borderInput{
+      border: 1px solid #DDDFE1;
+      padding: 10px;
+      margin-bottom: 40px;
+  }
+  .iconClose{
+      text-align: right;
+      cursor: pointer;
+  }

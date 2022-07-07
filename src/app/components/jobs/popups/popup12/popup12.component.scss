@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+* {
+    box-sizing: border-box;
+    position: fixed;
+    opacity: 1;
+}
+
+body {
+    margin: 0;
+}
+
+.background {
+    top: 0px;
+    left: 0px;
+    width: 1700px;
+    height: 1000px;
+    background: transparent linear-gradient(122deg, #D5D5DC66 0%, #D5D5DC30 100%) 0% 0% no-repeat padding-box;
+    box-shadow: 15px 15px 50px #FFFFFF29;
+    border: 1px solid #FFFFFF40;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+.popup {
+    top: 320px;
+    left: 500px;
+    width: 600px;
+    height: 360px;
+    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-radius: 20px;
+}
+
+.cross {
+    top: 355px;
+    left: 1057px;
+    width: 8px;
+    height: 8px;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.content {
+    top: 459px;
+    left: 626px;
+    width: 348px;
+    height: 28px;
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-600) var(--unnamed-font-size-20)/var(--unnamed-line-spacing-30) var(--unnamed-font-family-poppins);
+    color: var(--unnamed-color-44444f);
+    text-align: center;
+    font: normal normal 600 20px/30px Poppins;
+    letter-spacing: 0.1px;
+    color: #44444F;
+}
+
+.buttons .yes {
+    top: 508px;
+    left: 692px;
+    width: 92px;
+    height: 34px;
+    background: var(--theme) 0% 0% no-repeat padding-box;
+    background: #293266 0% 0% no-repeat padding-box;
+    border-radius: 19px;
+    letter-spacing: var(--unnamed-character-spacing-0);
+    text-align: center;
+    letter-spacing: 0px;
+    color: #FAFAFB;
+}
+
+.buttons .no {
+    top: 508px;
+    left: 816px;
+    width: 92px;
+    height: 34px;
+    background: var(--theme) 0% 0% no-repeat padding-box;
+    background: #293266 0% 0% no-repeat padding-box;
+    border-radius: 19px;
+    letter-spacing: var(--unnamed-character-spacing-0);
+    text-align: center;
+    letter-spacing: 0px;
+    color: #FAFAFB;
+}

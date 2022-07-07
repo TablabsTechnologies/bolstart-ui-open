@@ -1,0 +1,12 @@
+<div class="search-results" infinite-scroll [infiniteScrollDistance]="scrollDistance" (scrolled)="onScrollDown()"
+    [scrollWindow]="false" [infiniteScrollThrottle]="throttle">
+    <ul class="events">
+        <li class="list" *ngFor="let item of publishPostList">
+            <time></time>
+            <span class="content">
+                <label>{{onChangeDateFormat(item.date)}}</label>
+                <publish-container [publish]="item" [userInfo]="userDetail"></publish-container>
+            </span>
+        </li>
+    </ul>
+</div>

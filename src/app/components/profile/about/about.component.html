@@ -1,0 +1,6 @@
+<div *ngIf="ishow">
+    <app-about-info [userInfo]="userInfo"></app-about-info>
+    <app-education *ngIf="userInfo.typeOfUser == 3 || userInfo.typeOfUser == 4 || userInfo.typeOfUser == 5"
+        [userInfo]="userInfo"></app-education>
+    <app-experiance [userInfo]="userInfo"></app-experiance>
+</div>

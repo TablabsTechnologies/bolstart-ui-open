@@ -1,0 +1,38 @@
+@media (max-width: 520px) {
+  .bs-stepper .step-trigger {
+    flex-direction: column;
+    padding: 5px;
+    font-size: 12px !important;
+  }
+}
+.profile {
+  object-fit: cover;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  border: 2px solid var(--primary);
+}
+.logo {
+  object-fit: cover;
+  border-radius: 1%;
+  width: 120px;
+  height: 120px;
+  border: 2px dotted var(--primary);
+}
+.center {
+  transform: translate(-35px, -6px);
+  position: absolute;
+}
+.fab {
+  color: #293266;
+}
+.chip {
+  display: inline-block;
+  padding: 0 20px;
+  height: 30px;
+  font-size: 16px;
+  line-height: 30px;
+  border-radius: 25px;
+  background-color: #f1f1f1;
+  margin: 5px;
+}

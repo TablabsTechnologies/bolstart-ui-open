@@ -1,0 +1,35 @@
+<div class="card p-2">
+    <h5>My Network</h5>
+    <div *ngIf="myNetworkList.length > 0">
+        <ul>
+            <li *ngFor="let item of myNetworkList| paginate: config ;let i = index;">
+                <div class="inline">
+                    <img class="profile"
+                        [src]="item.profilePic != null ? item.profilePic:'assets/logo/profile_avater.png'">
+                    &nbsp;
+                    <div>
+                        <a (click)="goToProfile(item.userId)">
+                            <h6>{{item.firstName}} {{item.lastName}}</h6>
+                            <label>{{item.headline}}</label>
+                        </a>
+                    </div>
+                    <div class="menu">
+                        <!-- <button class="btn btn-outline-primary btn-sm" *ngIf="isShow && item != item.userId">Message</button> -->
+                        <button class="btn btn-primary btn-sm" *ngIf="!isShow && member != item.userId">Reach
+                            Out</button>
+                    </div>
+                </div>
+            </li>
+            <hr>
+        </ul>
+        <div>
+            <div style="text-align: center;padding: 0.8rem;">
+                <pagination-controls (pageChange)="pageChanged($event)">
+                </pagination-controls>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="myNetworkList.length == 0">
+        <label>You dont have any connection.</label>
+    </div>
+</div>

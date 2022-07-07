@@ -1,0 +1,21 @@
+.search-results {
+  height: 60rem;
+  overflow-y: scroll;
+  padding: 1px;
+}
+::-webkit-scrollbar {
+  width: 0px; /* width of the entire scrollbar */
+}
+.notFound {
+  height: 50vh;
+}
+.inActive {
+  background: white;
+  color: #293266;
+  border: 1px solid #293266;
+  transition: 1s all;
+}
+.btn {
+  margin-top: -1rem !important;
+  width: 20%;
+}

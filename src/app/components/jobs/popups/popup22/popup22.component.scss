@@ -1,0 +1,86 @@
+.main {
+    max-width: 600px;
+    height: 360px;
+    /* UI Properties */
+    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border-radius: 20px;
+    padding: 20px;
+    opacity: 1;
+}
+
+.text-p {
+    width: 397px;
+    height: 64px;
+    /* UI Properties */
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-20)/var(--unnamed-line-spacing-30) var(--unnamed-font-family-poppins);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-44444f);
+    text-align: center;
+    font: normal normal normal 20px/30px Poppins;
+    letter-spacing: 0px;
+    color: #44444F;
+    font-weight: 600;
+    opacity: 1;
+    line-height: 26px;
+    margin-bottom: 4px;
+
+
+}
+
+
+
+.content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 80%;
+}
+
+.lst-line {
+    width: 397px;
+    // font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-20)/var(--unnamed-line-spacing-30) var(--unnamed-font-family-poppins);
+    // letter-spacing: var(--unnamed-character-spacing-0);
+    // color: var(--unnamed-color-44444f);
+    text-align: center;
+    font: normal normal normal 20px/30px Poppins;
+    letter-spacing: 0px;
+    font-weight: 600;
+    color: #44444F;
+    opacity: 1;
+    line-height: 26px;
+
+}
+
+.use {
+    // font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-600) var(--unnamed-font-size-20)/var(--unnamed-line-spacing-30) var(--unnamed-font-family-poppins);
+    // letter-spacing: var(--unnamed-character-spacing-0);
+    // color: var(--unnamed-color-44444f);
+    text-align: center;
+    // font: normal normal 600 20px/30px Poppins;
+    letter-spacing: 0px;
+    color: #44444F;
+    opacity: 1;
+    font-weight: 700;
+    margin-bottom: 4px;
+    font-size: 20px;
+    line-height: 26px;
+
+}
+
+.meetaide {
+    // font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-600) var(--unnamed-font-size-20)/var(--unnamed-line-spacing-30) var(--unnamed-font-family-poppins);
+    // letter-spacing: var(--unnamed-character-spacing-0);
+    // color: var(--unnamed-color-44444f);
+    text-align: center;
+    // font: normal normal 600 20px/30px Poppins;
+    letter-spacing: 0px;
+    color: #44444F;
+    opacity: 1;
+    font-weight: 700;
+    margin: 0;
+    font-size: 20px;
+    line-height: 26px;
+
+}
