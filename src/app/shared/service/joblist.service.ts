@@ -16,14 +16,16 @@ export class JoblistService{
  constructor(private http:HttpClient){}
 
  getAllJobsList(){
-    return this.http.get('assets/getAllJobs.json')
-    // return this.http.get(this.joburl+'/jobpost/job/getAll');
+   // return this.http.get('assets/getAllJobs.json');
+    var requestUrl = "http://localhost:9090/jobpost/job/getAll"
+    return this.http.get(requestUrl);
  }
 
  
  createNewJob(requestBody){
-   const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
-    return this.http.post<any>(this.joburl+'/jobpost/job/getAll', requestBody, { headers });
+  const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
+  var requestUrl = "http://localhost:9090/jobpost/save"
+   return this.http.post<any>(requestUrl, requestBody, { headers });
 }
 
  setJobDetails(jobDetails){
@@ -37,7 +39,11 @@ export class JoblistService{
 
  
  applyToJob(requestBody){
-   const headers = { 'Authorization': 'Bearer my-token', 'Content-Type': 'multipart/form-data' };
+   const headers = { 'Authorization': 'Bearer my-token'};
+   this.joburl = "http://localhost:9090"
+   var requestUrl = "http://localhost:9090/jobpost/job/applyJob";
+   return this.http.post<any>(requestUrl, requestBody, { headers });
+  // const headers = { 'Authorization': 'Bearer my-token', 'Content-Type': 'multipart/form-data' };
   //  return this.http.post<any>(this.joburl+'/jobpost/uploadImage?id=4', requestBody, { headers });
     var response:any=[]
     var apiUrl = this.joburl+'/jobpost/uploadImage?id=4';
@@ -47,16 +53,13 @@ export class JoblistService{
     let me = this;
     var request = new XMLHttpRequest();
     request.open("POST", apiUrl);
-   // request.setRequestHeader("Authorization", "Bearer "+localStorage.getItem('access_token'));
     request.onload = function () {
-     // var uploadResponse: BehaviorSubject<object> = new BehaviorSubject<object>([]);
       var uploadResponse=JSON.parse(this.responseText)
       var res = {'status':uploadResponse['success'],'message':uploadResponse['message']}
       me.setUploadResponse(res);
       return res;
     };
     request.onerror = function () {
-    //var uploadResponse: BehaviorSubject<object> = new BehaviorSubject<object>([]);
       var uploadResponse=JSON.parse(this.responseText)
       var res = {'status':uploadResponse['success'],'message':uploadResponse['message']}
       me.setUploadResponse(res);
@@ -80,5 +83,26 @@ addToSaveList(requestBody){
   const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
    return this.http.post<any>(this.joburl+'/jobpost/job/saveJos', requestBody, { headers });
 }
+
+getAllJobApplyer(requestBody){
+  const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
+  var requestUrl = "http://localhost:9090/jobpost/job/getJobApplyer?jobId="+requestBody['jobId']
+   return this.http.post<any>(requestUrl, requestBody, { headers });
+}
+
+
+updateRating(requestBody){
+  const headers = {};
+  var requestUrl = "http://localhost:9090/jobpost/jobpost/applyedJobStarRating"
+   return this.http.put<any>(requestUrl, requestBody, { headers });
+}
+
+
+updateRecruiterAction(requestBody){
+  const headers = {};
+  var requestUrl = "http://localhost:9090/jobpost/jobpost/updateRecruiterAction"
+   return this.http.put<any>(requestUrl, requestBody, { headers });
+}
+
 
 }

@@ -3,8 +3,8 @@
 </div>
 <div class="main_page_holder">
   <div class="mainPage">
-    <div class="innter-main">
-      <div>
+    <div class="innter-main" routerLink="/jobs/job-post-form">
+      <div >
         <p class="title-of-card"> Post New Internship</p>
         <p>publish your job Post to thousands of</p>
         <p>students across the world</p>
@@ -23,7 +23,7 @@
         <!-- <span> </span> -->
         <span></span>
         <span class="title-active">Active Job Post</span>
-        <span class="title-active2">View Candidates</span>
+        <span class="title-active2"><a style="" (click)="setJobDetails(jobList.id)"> View Candidates</a></span>
       </div>
     </div>
     <div class="paddtion-from-top">

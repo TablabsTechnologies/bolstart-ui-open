@@ -1,6 +1,6 @@
 <div class="applicationProfile">
     <div class="row">
-      <h1>Applicant Review: Java Developer (48 Applicants)</h1>
+      <h1>Applicant Review: Java Developer ({{ jobApplyers.length }} Applicants)</h1>
       <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
         <div class="rightBar">
           <div class="filterSec">
@@ -10,137 +10,54 @@
             </div>
             <div class="filter"><a><i class="fa fa-filter" aria-hidden="true" style="margin-right: 5px;"></i>Filter</a></div>
           </div>
-          <div class="applicantList">
-            <div class="applicantCard active">
-               <div class="profileimg">
-                  <img src="/assets/img/profile.png" width="48px" height="48px">
-               </div>
-               <div class="profileNameScore">
-                <div class="nameOfApplivcant">Rosa Pagac</div>
-                <div class="score">
-                  <div class="scorecircle">
-                    <span class="fa fa-circle checked"></span>
-                    <span class="fa fa-circle checked"></span>
-                    <span class="fa fa-circle checked"></span>
-                    <span class="fa fa-circle"></span>
-                    <span class="fa fa-circle"></span>
+          <div class="applicantList" *ngIf="jobApplyers.length>0" >
+            <div  [ngClass]="((activeIndex) == i)?'applicantCard active':'applicantCard'"  *ngFor="let item of jobApplyers;let i=index" (click)="getUserDetails(i)">
+                  <div class="profileimg">
+                      <img src="/assets/img/profile.png" width="48px" height="48px">
                   </div>
-                </div>
-               </div>
-               <div class="Iconsection">
-                <div class="icon"><i class="fa fa-check" aria-hidden="true"></i></div>
-                <div class="icon"><i class="fa fa-question"></i></div>
-                <div class="icon"><i class="fa fa-close"></i></div>
-              </div>
+                  <div class="profileNameScore">
+                    <div class="nameOfApplivcant">{{ item.userDetails.firstName }} {{ item.userDetails.lastName }}</div>
+                    <div class="score">
+                      <div class="scorecircle">
+                        <ng-container *ngFor="let index1 of [1,2,3,4,5]">
+                          <span style="cursor: pointer;" (click)="updateStartRating(index1,item.id)"
+                          [ngClass]="((item.startRating) >= index1)?'fa fa-circle checked':'fa fa-circle'" 
+                          ></span>
+                        </ng-container>
+                        <!-- <span class="fa fa-circle checked"></span>
+                        <span class="fa fa-circle checked"></span>
+                        <span class="fa fa-circle checked"></span>
+                        <span class="fa fa-circle"></span>
+                        <span class="fa fa-circle"></span> -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="Iconsection">
+                    <div style="cursor: pointer;" (click)="recruiterAction(item.id,1)"  [ngClass]="(( item.rerecruiterAction ) == 1)?'icon selected':'icon'" ><i class="fa fa-check" aria-hidden="true"></i></div>
+                    <div style="cursor: pointer;" (click)="recruiterAction(item.id,2)"  [ngClass]="(( item.rerecruiterAction ) == 2)?'icon selected':'icon'"><i class="fa fa-question"></i></div>
+                    <div style="cursor: pointer;" (click)="recruiterAction(item.id,3)"  [ngClass]="(( item.rerecruiterAction ) == 3)?'icon selected':'icon'"><i class="fa fa-close"></i></div>
+                  </div>
             </div>
-            <div class="applicantCard">
-              <div class="profileimg">
-                 <img src="/assets/img/profile.png" width="48px" height="48px">
-              </div>
-              <div class="profileNameScore">
-               <div class="nameOfApplivcant">Rosa Pagac</div>
-               <div class="score">
-                 <div class="scorecircle">
-                   <span class="fa fa-circle checked"></span>
-                   <span class="fa fa-circle checked"></span>
-                   <span class="fa fa-circle checked"></span>
-                   <span class="fa fa-circle"></span>
-                   <span class="fa fa-circle"></span>
-                 </div>
-               </div>
-              </div>
-              <div class="Iconsection">
-               <div class="icon"><i class="fa fa-check" aria-hidden="true"></i></div>
-               <div class="icon"><i class="fa fa-question"></i></div>
-               <div class="icon"><i class="fa fa-close"></i></div>
-             </div>
-           </div>
-           <div class="applicantCard">
-            <div class="profileimg">
-               <img src="/assets/img/profile.png" width="48px" height="48px">
-            </div>
-            <div class="profileNameScore">
-             <div class="nameOfApplivcant">Rosa Pagac</div>
-             <div class="score">
-               <div class="scorecircle">
-                 <span class="fa fa-circle checked"></span>
-                 <span class="fa fa-circle checked"></span>
-                 <span class="fa fa-circle checked"></span>
-                 <span class="fa fa-circle"></span>
-                 <span class="fa fa-circle"></span>
-               </div>
-             </div>
-            </div>
-            <div class="Iconsection">
-             <div class="icon"><i class="fa fa-check" aria-hidden="true"></i></div>
-             <div class="icon"><i class="fa fa-question"></i></div>
-             <div class="icon"><i class="fa fa-close"></i></div>
-           </div>
-         </div>
-         <div class="applicantCard">
-          <div class="profileimg">
-             <img src="/assets/img/profile.png" width="48px" height="48px">
-          </div>
-          <div class="profileNameScore">
-           <div class="nameOfApplivcant">Rosa Pagac</div>
-           <div class="score">
-             <div class="scorecircle">
-               <span class="fa fa-circle checked"></span>
-               <span class="fa fa-circle checked"></span>
-               <span class="fa fa-circle checked"></span>
-               <span class="fa fa-circle"></span>
-               <span class="fa fa-circle"></span>
-             </div>
-           </div>
-          </div>
-          <div class="Iconsection">
-           <div class="icon"><i class="fa fa-check" aria-hidden="true"></i></div>
-           <div class="icon"><i class="fa fa-question"></i></div>
-           <div class="icon"><i class="fa fa-close"></i></div>
-         </div>
-       </div>
-       <div class="applicantCard">
-        <div class="profileimg">
-           <img src="/assets/img/profile.png" width="48px" height="48px">
-        </div>
-        <div class="profileNameScore">
-         <div class="nameOfApplivcant">Rosa Pagac</div>
-         <div class="score">
-           <div class="scorecircle">
-             <span class="fa fa-circle checked"></span>
-             <span class="fa fa-circle checked"></span>
-             <span class="fa fa-circle checked"></span>
-             <span class="fa fa-circle"></span>
-             <span class="fa fa-circle"></span>
-           </div>
-         </div>
-        </div>
-        <div class="Iconsection">
-         <div class="icon"><i class="fa fa-check" aria-hidden="true"></i></div>
-         <div class="icon"><i class="fa fa-question"></i></div>
-         <div class="icon"><i class="fa fa-close"></i></div>
-       </div>
-     </div>
           </div>
         </div>
       </div>
       <div class="col-sm-12 col-md-9 col-lg-9 col-xl-9">
-          <div class="jobDetails ">
-            <div class="upperside row">
+          <div class="jobDetails" *ngIf="jobApplyersDetails">
+            <div class="upperside row" >
             <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
               <div class="profileDetails">
                 <div class="profileImage">
                   <img src="/assets/img/profile.png" width="100px" height="100px">
                 </div>
                 <div class="profile">
-                  <div class="applicantName">Harry Armilanndo</div>
-                  <div class="profileName">UI / UX Designer</div>
-                  <div class="location">Mumbai | Applied 15 Days ago</div>
-                  <div class="studentLocation">Student @ IIT Mumbai</div>
+                  <div class="applicantName">{{ jobApplyersDetails['userDetails']["firstName"] }} {{ jobApplyersDetails['userDetails']["lastName"] }} </div>
+                 <div class="profileName">{{jobApplyersDetails['job_title']}}</div>
+                  <div class="location">{{jobApplyersDetails['userDetails']['location']}} | Applied 15 Days ago</div>
+                  <div class="studentLocation">{{jobApplyersDetails['userDetails']['education'][0]['institutionName']}}</div>
                   <div class="contactDetails">
-                    <div class="phone"><i class="fa fa-phone"></i>(+91) 8888888888</div>
-                    <div class="email"><i class="fa fa-envelope"></i>harry@gmail.com</div>
-                  </div>
+                    <div class="phone"><i class="fa fa-phone"></i>{{jobApplyersDetails['userDetails']['mobileNumber']}}</div>
+                    <div class="email"><i class="fa fa-envelope"></i>{{ jobApplyersDetails['userDetails']['emailId']}}</div>
+                  </div> 
                 </div>
             </div>
             </div>
@@ -149,21 +66,28 @@
                 <div class="hireSection">
                   <a class="hirebtn"> <i class="fa fa-handshake-o" aria-hidden="true"></i> Hire</a>
                   <div class="Iconsection">
-                    <div class="icon"><i class="fa fa-check" aria-hidden="true"></i></div>
-                    <div class="icon"><i class="fa fa-question"></i></div>
-                    <div class="icon"><i class="fa fa-close"></i></div>
+                    <div (click)="recruiterAction(jobApplyersDetails['rerecruiterAction'],1)"  [ngClass]="((jobApplyersDetails['rerecruiterAction']) == 1)?'icon selected':'icon'"><i class="fa fa-check" aria-hidden="true"></i></div>
+                    <div (click)="recruiterAction(jobApplyersDetails['rerecruiterAction'],2)"  [ngClass]="((jobApplyersDetails['rerecruiterAction']) == 2)?'icon selected':'icon'"><i class="fa fa-question"></i></div>
+                    <div (click)="recruiterAction(jobApplyersDetails['rerecruiterAction'],3)"  [ngClass]="((jobApplyersDetails['rerecruiterAction']) == 3)?'icon selected':'icon'"><i class="fa fa-close"></i></div>
                   </div>
                 </div>
                 <div class="score">
                   <div class="scorehead">Score:</div>
                   <div class="scorecircle">
-                    <span class="fa fa-circle checked"></span>
-                    <span class="fa fa-circle checked"></span>
+                    <ng-container *ngFor="let index of [1,2,3,4,5]">
+                      <span (click)="updateStartRating(index,jobApplyersDetails['id'])" style="cursor: pointer;"
+                      [ngClass]="((jobApplyersDetails['startRating']) >= index)?'fa fa-circle checked':'fa fa-circle'" 
+                      ></span>
+                    </ng-container>
+                  
+                   
+                    <!-- <span class="fa fa-circle checked"></span>
                     <span class="fa fa-circle checked"></span>
                     <span class="fa fa-circle"></span>
-                    <span class="fa fa-circle"></span>
+                    <span class="fa fa-circle"></span> -->
                   </div>
                 </div>
+                <!-- jobApplyersDetails['userDetails']['startRating'] -->
                 <div class="resumeDowloadBtn">
                   <a> <i class="fa fa-download" aria-hidden="true"></i>Download Resume</a>
                 </div>
@@ -180,7 +104,7 @@
             <div id="tab1" class="tabcontent">
               <div class="bioDetails">
                    <div class="biocontent">
-                     <h1>John Doe</h1>
+                     <h1>{{ jobApplyersDetails['userDetails']["firstName"] }} {{ jobApplyersDetails['userDetails']["lastName"] }}</h1>
                      <div class="bioAddress">111 Street,Las vegas, NV 99999 | H:(000)000-0000 | example-email@email.com</div>
                      <div class="professionalContent">
                      <h2>Professional Summary</h2>

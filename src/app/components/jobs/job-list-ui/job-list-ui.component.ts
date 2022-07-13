@@ -118,7 +118,11 @@ export class JobListUiComponent implements OnInit {
   createJob(){
 
   }
-  openDialog(): void {
+  openDialog(id): void {
+    var jobDetails = this.joblist.data.filter(obj => obj.id == id);
+    if(jobDetails.length>0){
+        this.jobservice.setJobDetails(jobDetails[0])
+    }
     const dialogRef = this.dialog.open(Popup13Component, {
       // width: '250px',
       data: {name: this.name, animal: this.animal},
