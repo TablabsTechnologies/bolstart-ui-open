@@ -159,9 +159,9 @@
               <div type="button" id="btn-t">Saved Jobs</div>
               <div type="button" id="btn-t">My Jobs</div>
             </div>
-            <div class="button-al">
+            <!-- <div class="button-al">
               <div type="button" id="btn-t" routerLink="/jobs/job-post-form" >Create Job</div>
-            </div>
+            </div> -->
           </div>
           <p class="recnet">Recent Job Searches</p>
           <div class="form-check">
@@ -254,7 +254,7 @@
               <button class="button-i" (click)="openBottomSheet(item.id)"><span class="button-i-text">Read More</span></button>
 
 
-              <span class="Quick" (click)="openDialog()">
+              <span class="Quick" (click)="openDialog(item.id)">
                 Quick Apply
                 <img src="assets/icons/ray.png" width="15px" class="hideIcon" alt="" /></span>
             </div>

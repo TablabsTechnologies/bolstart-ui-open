@@ -48,8 +48,23 @@ export class Popup13Component {
   onChangeFileInput(): void {
     const files: { [key: string]: File } = this.fileInput.nativeElement.files;
     this.file = files[0];
-   var responseBody=this.jobservice.applyToJob(this.file); 
-   console.log(responseBody);
+    let user_id = localStorage.getItem('member');
+    var jobDetails =  this.jobservice.getJobDetails();
+
+    var requestBody = 
+    {
+      "job_id":jobDetails['id'],
+      //"user_id":parseInt("2")
+      "user_id":parseInt(user_id)
+    }
+    var responseBody=this.jobservice.applyToJob(requestBody).subscribe((responseBody)=>{
+      if(responseBody['success']){
+        alert(responseBody['message']);
+      }
+    }); 
+
+  // var responseBody=this.jobservice.applyToJob(this.file); 
+   console.log(jobDetails['id'],user_id);
 
   }
 

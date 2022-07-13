@@ -196,20 +196,6 @@ h2{
     color: #171725;
     font-weight: 700;
 }
-
-}
-.icon.selected {
-  background: transparent linear-gradient(180deg, #009CC3 0%, #69F0AE 100%) 0% 0% no-repeat !important;
-}
-.applicantCard.active {
-  background: #293266 0% 0% no-repeat padding-box !important;
-  color: #ffffff;
-  .Iconsection .icon {
-    border: 1px solid #ffffff !important;
-  }
-  .nameOfApplivcant{
-    color: #ffffff !important;
-  }
 }
   .Iconsection {
     display: inline-flex;

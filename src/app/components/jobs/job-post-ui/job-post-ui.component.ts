@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { JobService } from '../job.service';
+import { JoblistService } from 'src/app/shared/service/joblist.service';
 import { Popup6Component } from '../popups/popup6/popup6.component';
+import { Router } from '@angular/router';
 // import { Popup12Component } from '../popups/popup12/popup12.component';
 // import { Popup13Component } from '../popups/popup13/popup13.component';
 
@@ -12,78 +14,17 @@ import { Popup6Component } from '../popups/popup6/popup6.component';
 })
 export class JobPostUIComponent implements OnInit {
   jobPostList: [] = [] as any
-  constructor(private jobService: JobService, public dialog: MatDialog) {
+  joblist:any=[];
+  constructor(private router:Router,private jobService: JobService, private joblistService:JoblistService,public dialog: MatDialog) {
  
   }
   arr: any = [
-    {
-      title: 'UI/UX Designer',
-      Img: 'assets/Screenshot 2022-03-15 204058.png',
-      title2: 'Coursera Hyderabad',
-      day: '2',
-      applications: '2',
-      types: '',
-      Jobcategory: 'Job category',
-    },
-    {
-      title: 'UI/UX Designer',
-      Img: 'assets/Screenshot 2022-03-15 204058.png',
-      title2: 'Coursera Hyderabad',
-      day: '2',
-      applications: '2',
-      types: '',
-      Jobcategory: 'Job category',
-    },
-    {
-      title: 'UI/UX Designer',
-      Img: 'assets/Screenshot 2022-03-15 204058.png',
-      title2: 'Coursera Hyderabad',
-      day: '2',
-      applications: '2',
-      types: '',
-      Jobcategory: 'Job category',
-    },
-    {
-      title: 'UI/UX Designer',
-      Img: 'assets/Screenshot 2022-03-15 204058.png',
-      title2: 'Coursera Hyderabad',
-      day: '2',
-      applications: '2',
-      types: '',
-      Jobcategory: 'Job category',
-    },
-    {
-      title: 'UI/UX Designer',
-      Img: 'assets/Screenshot 2022-03-15 204058.png',
-      title2: 'Coursera Hyderabad',
-      day: '2',
-      applications: '2',
-      types: '',
-      Jobcategory: 'Job category',
-    },
-    {
-      title: 'UI/UX Designer',
-      Img: 'assets/Screenshot 2022-03-15 204058.png',
-      title2: 'Coursera Hyderabad',
-      day: '2',
-      applications: '2',
-      types: '',
-      Jobcategory: 'Job category',
-    },
-    {
-      title: 'UI/UX Designer',
-      Img: 'assets/Screenshot 2022-03-15 204058.png',
-      title2: 'Coursera Hyderabad',
-      day: '2',
-      applications: '2',
-      types: '',
-      Jobcategory: 'Job category',
-    },
+   
   ];
   ngOnInit(): void {
     this.jobService.getJobPostByCompanyId().subscribe((res: any) => {
+      this.joblist=res;
       this.jobPostList = res.data
-      debugger
     })
   }
 
@@ -99,4 +40,11 @@ export class JobPostUIComponent implements OnInit {
     });
   }
 
+  setJobDetails(id){
+    var jobDetails = this.joblist.data.filter(obj => obj.id == id);
+    if(jobDetails.length>0){
+        this.joblistService.setJobDetails(jobDetails[0]);
+        this.router.navigate(['jobs/ApplicationDetails'])
+    }
+  }
 }
