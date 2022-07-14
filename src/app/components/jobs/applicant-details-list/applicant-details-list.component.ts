@@ -3,6 +3,7 @@ import { JoblistService } from 'src/app/shared/service/joblist.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Popup6Component } from '../popups/popup6/popup6.component';
 import { PopupJobApplyer } from '../popups/popup_job_applyer/popup_job_applyer.component';
+import { Router,ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-applicant-details-list',
@@ -17,9 +18,14 @@ export class ApplicantDetailsListComponent implements OnInit {
   public jobDetail:any;
   public activeIndex:number=0;
   public performAction:any=[];
-  constructor(private joblistService:JoblistService,public dialog: MatDialog,public chDRef:ChangeDetectorRef) {
-    this.jobId = 5;
-    this.getApplyersList(this.jobId);
+  constructor(private snapRoute : ActivatedRoute, private joblistService:JoblistService,public dialog: MatDialog,public chDRef:ChangeDetectorRef) {
+   
+  
+    this.snapRoute.params.subscribe((paramsResponse)=>{
+      console.log("paramsResponse:",paramsResponse['id']);
+      this.jobId = paramsResponse['id'];
+      this.getApplyersList(this.jobId);
+    });
     
    }
    @Output() getMessage=new EventEmitter<any>();
@@ -41,9 +47,8 @@ export class ApplicantDetailsListComponent implements OnInit {
   }
 
   getApplyersList(jobId){
-     var jobDetails =  this.joblistService.getJobDetails();
       var requestBody = {
-        jobId:jobDetails['id']
+        jobId:jobId
       }
     this.joblistService.getAllJobApplyer(requestBody).subscribe((responseBody)=>{
         if(responseBody['success']){
@@ -55,6 +60,10 @@ export class ApplicantDetailsListComponent implements OnInit {
               const dialogRef = this.dialog.open(PopupJobApplyer, {
                 width: '600px',
                 height: '360px',
+                data: {
+                  msg: "No more job applyer are found.",
+                  active:"activeStatus"
+                },
                 backdropClass: 'backdropBackground'
               });
           
@@ -87,6 +96,7 @@ export class ApplicantDetailsListComponent implements OnInit {
   }
 
   updateStartRating(startRating,id){
+    var index=  this.activeIndex;
     var requestBody =  {
         "id":id,
         "startRating":startRating
@@ -96,11 +106,13 @@ export class ApplicantDetailsListComponent implements OnInit {
       console.log("Applyer List:",responseBody)
       if(responseBody['success']){
         this.getApplyersList(this.jobId)
+        this.getUserDetails(index);
       }
   })
   }
 
   recruiterAction(id,action){
+    var index=  this.activeIndex;
     var requestBody =  {
         "id":id,
         "rerecruiterAction":action
@@ -109,7 +121,8 @@ export class ApplicantDetailsListComponent implements OnInit {
     this.joblistService.updateRecruiterAction(requestBody).subscribe((responseBody)=>{
       console.log("Applyer List:",responseBody)
       if(responseBody['success']){
-        this.getApplyersList(this.jobId)
+        this.getApplyersList(this.jobId);
+        this.getUserDetails(index);
       }
   })
   }

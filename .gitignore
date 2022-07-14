@@ -45,3 +45,4 @@ Thumbs.db
 *.wmv
 
 src/cometchat-pro-angular-ui-kit/
+.vscode/

@@ -31,7 +31,7 @@ const routes: Routes = [{
     { path: "job-list-ui", component: JobListUiComponent },
     { path: "job-post-ui", component: JobPostUIComponent },
     { path: "job-post-cancel-popup", component: Popup6Component },
-    { path: "job-post-form", component: JobPostFormComponent },
+    { path: "job-post-form/:name", component: JobPostFormComponent },
     { path: "job-list-details", component: JobApplyBottomSheetComponent },
     { path: "quick-apply-popup", component: QuickapplyPopupComponent },
     { path: "PerkComponent", component: PerkComponent },
@@ -47,7 +47,7 @@ const routes: Routes = [{
     { path: "Popup22Component", component: Popup22Component },
     { path: "InternsComponent", component: InternsComponent },
     { path: "popup30Component", component: Popup30Component },
-    { path:"ApplicationDetails",component: ApplicantDetailsListComponent}
+    { path:"ApplicationDetails/:id",component: ApplicantDetailsListComponent}
   ]
 }];
 

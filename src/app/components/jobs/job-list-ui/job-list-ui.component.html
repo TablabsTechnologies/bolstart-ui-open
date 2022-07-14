@@ -210,7 +210,7 @@
                 </div>
                 <div>
                   <div class="nameT">stipend</div>
-                  <div class="value-c">TODO /month</div>
+                  <div class="value-c">{{ item.stipend }} /month</div>
                 </div>
 
                 <div>
@@ -237,11 +237,11 @@
                 </span>
                 <span class="dis">
                   {{ item.startDate }} |
-                  TODO Applicants</span>
+                  {{ item.noOfApplication }} Applicants</span>
               </div>
             </div>
             <div class="category">
-              <span>Full time New</span>
+              <span>{{ item.typeofJob}}</span>
               <span>Remote new</span>
               <span>UI/UX new</span>
             </div>

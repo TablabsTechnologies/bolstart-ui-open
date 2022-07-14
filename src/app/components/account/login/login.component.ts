@@ -121,24 +121,23 @@ export class LoginComponent implements OnInit {
   /* ========================================================== */
   /* ========================= Login Module =================================== */
   onLogin() {
-    debugger
     let formData = new FormData;
     formData.append("password", this.loginFrom.value.password);
     formData.append("os", "web");
     formData.append("deviceId", "89ABCDEF-01234567-89ABCDEF");
     var email_pattern = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
     var mobile_pattern = /^[0-9]/;
-    debugger
     if (email_pattern.test(this.loginFrom.value.username)) {
       formData.append("emailId", this.loginFrom.value.username);
       this.isLoading = true;
       this.apiService.authLoginUsingEmail(formData).subscribe(res => {
-        debugger
+        
         this.isLoading = false;
         if (res.data != null) {
           if (res.data.isEmailVerified == 'true') {
             let encrypt = CryptoJS.AES.encrypt(JSON.stringify(res.data), "Bollstart").toString();
             localStorage.setItem('member', res.data.id);
+            localStorage.setItem("company_id", res.data.company_id)
             localStorage.setItem('Bolstart', encrypt);
             this.router.navigate(['/home']);
           } else {

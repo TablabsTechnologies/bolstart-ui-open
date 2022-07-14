@@ -3,7 +3,7 @@
 </div>
 <div class="main_page_holder">
   <div class="mainPage">
-    <div class="innter-main" routerLink="/jobs/job-post-form">
+    <div class="innter-main" routerLink="/jobs/job-post-form/0">
       <div >
         <p class="title-of-card"> Post New Internship</p>
         <p>publish your job Post to thousands of</p>
@@ -23,7 +23,7 @@
         <!-- <span> </span> -->
         <span></span>
         <span class="title-active">Active Job Post</span>
-        <span class="title-active2"><a style="" (click)="setJobDetails(jobList.id)"> View Candidates</a></span>
+        <span class="title-active2"><a  (click)="setJobDetails(jobList.id)"> View Candidates</a></span>
       </div>
     </div>
     <div class="paddtion-from-top">
@@ -42,10 +42,14 @@
         </div>
         <div class="alignBtn">
           <!-- <button > Apply now</button> -->
-          <button type="button" class="one" (click)="opendia12()">
-            Deactivate
+          <button   *ngIf="jobList.active"  type="button" class="one" (click)="opendia12(jobList.id,jobList.active)">
+            Deactivate 
           </button>
-          <button type="button" class="two">
+
+          <button *ngIf="!jobList.active" type="button" class="one" (click)="opendia12(jobList.id,jobList.active)">
+            Activate 
+          </button>
+          <button type="button" routerLink="/jobs/job-post-form/{{ jobList.id }}" class="two">
             Edit
           </button>
         </div>
