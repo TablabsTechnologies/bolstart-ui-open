@@ -95,6 +95,7 @@ h2{
     i {
       padding-right: 5px;
   }
+  
   }
  
 .Iconsection {
@@ -110,8 +111,16 @@ h2{
     text-align: center;
     font-size: 18px;
 }
+.icon.selected {
+  background: #48d6b5 !important;
+  color: white !important;
+ 
+}
+
 }
 }
+
+
 .resumeDowloadBtn {
   margin-top: 20px;
   a {
@@ -146,6 +155,11 @@ h2{
   }
 }
 }
+}
+.icon.listselected {
+  background: #48d6b5 !important;
+  color: white !important;
+ 
 }
 .rightBar{
   .filterSec {
@@ -198,11 +212,7 @@ h2{
 }
 
 }
-.icon.selected {
-  background: transparent linear-gradient(180deg, #009CC3 0%, #69F0AE 100%) 0% 0% no-repeat !important;
-}
 .applicantCard.active {
-  background: #293266 0% 0% no-repeat padding-box !important;
   color: #ffffff;
   .Iconsection .icon {
     border: 1px solid #ffffff !important;
@@ -250,4 +260,16 @@ h2{
     }
  }
 }
+}
+
+.applicantCard.active {
+  background: #293266 0% 0% no-repeat padding-box !important;
+  color: #ffffff;
+  color: #ffffff;
+  .nameOfApplivcant{
+    color: #ffffff !important;
+  }
+  .Iconsection .icon {
+    border: 1px solid #ffffff !important;
+  }
 }

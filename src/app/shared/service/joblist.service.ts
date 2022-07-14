@@ -10,7 +10,8 @@ import { BehaviorSubject } from "rxjs";
 
 export class JoblistService{
  joburl = environment.jobPostBaseUrl;
- JobDetails:any
+ JobDetails:any;
+ setJobStatus:any;
  uploadResponse:BehaviorSubject<object>=new BehaviorSubject<object>({})
  
  constructor(private http:HttpClient){}
@@ -24,8 +25,21 @@ export class JoblistService{
  
  createNewJob(requestBody){
   const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
-  var requestUrl = "http://localhost:9090/jobpost/save"
-   return this.http.post<any>(requestUrl, requestBody, { headers });
+  var requestUrl = "http://localhost:9090/"
+  if(requestBody['id']==0){
+    requestUrl = requestUrl+"jobpost/save";
+    return this.http.post<any>(requestUrl, requestBody, { headers });
+  }else{
+    requestUrl = requestUrl+"jobpost/jobpost/update";
+    return this.http.put<any>(requestUrl, requestBody, { headers });
+  }
+   
+}
+
+getJob(requestBody){
+  const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
+  var requestUrl = "http://localhost:9090/jobpost/getbyjobPostId?id="+requestBody['id']
+   return this.http.get<any>(requestUrl, requestBody);
 }
 
  setJobDetails(jobDetails){
@@ -104,5 +118,19 @@ updateRecruiterAction(requestBody){
    return this.http.put<any>(requestUrl, requestBody, { headers });
 }
 
+
+updateJobStatus(requestBody){
+  const headers = {};
+  var requestUrl =  this.joburl+"/jobpost/jobpost/deActiveJobPost"
+   return this.http.put<any>(requestUrl, requestBody, { headers });
+}
+
+setJobStatusResponse(setJobStatus){
+  this.setJobStatus = setJobStatus
+}
+
+getJobStatusResponse(){
+ return this.setJobStatus;
+}
 
 }

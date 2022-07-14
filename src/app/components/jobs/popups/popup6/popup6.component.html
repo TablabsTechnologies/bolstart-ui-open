@@ -7,8 +7,11 @@
     <div class="content">
         <p class="text-p">{{popupMessage}}</p>
         <div class="buttons-dev">
-            <button class="deactivateBtn">Deactivate</button>
+            <button class="deactivateBtn" (click)="updateJob()">{{ data.msg }}</button>
             <button class="cancel" (click)="onNoClick()"> Cancel</button>
         </div>
     </div>
+
+  
+
 </div>

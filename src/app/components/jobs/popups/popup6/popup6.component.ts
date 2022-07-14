@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, Input,Output,EventEmitter } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
+import { JoblistService } from 'src/app/shared/service/joblist.service';
 
 @Component({
   selector: 'app-popup6',
@@ -9,7 +9,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class Popup6Component implements OnInit {
   public popupMessage:String= "Are You Sure you want to deactivate this job post for java Developer";
-  constructor(public dialogRef: MatDialogRef<Popup6Component>,
+  constructor(public joblistService:JoblistService,public dialogRef: MatDialogRef<Popup6Component>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
     @Input() getMessage:String='';
   onNoClick(): void {
@@ -21,6 +21,25 @@ export class Popup6Component implements OnInit {
 
   }
   ngOnInit(): void {
+    console.log("Passed Data :",this.data.msg)
+    this.popupMessage = "Are You Sure you want to "+this.data.msg+" this job post for java Developer";
+  }
+
+  updateJob(){
+    var requestBody = {
+      "active": this.data.active,
+      "id":this.data.id
+      }
+      this.joblistService.setJobStatusResponse({
+        "message" : "",
+        "data" : "",
+        "success" : false
+      });
+      this.joblistService.updateJobStatus(requestBody).subscribe((responseBody)=>{
+        console.log("responseBody : ",responseBody);
+        this.dialogRef.close();
+        this.joblistService.setJobStatusResponse(responseBody);
+      })
   }
 
 }

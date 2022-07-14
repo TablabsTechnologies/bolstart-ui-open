@@ -28,23 +28,39 @@ export class JobPostUIComponent implements OnInit {
     })
   }
 
-  opendia12(): void {
+  opendia12(id,activeStatus): void {
+    console.log(id,activeStatus);
+    var activeMsg = 'Active'
+    if(activeStatus){
+      activeMsg = "Deactive"
+      activeStatus=false;
+    }else{
+      activeMsg = "Active"
+      activeStatus=true;
+    }
+   
     const dialogRef = this.dialog.open(Popup6Component, {
       width: '600px',
       height: '360px',
+      data: {
+        msg: activeMsg,
+        id:id,
+        active:activeStatus
+      },
       backdropClass: 'backdropBackground'
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+   
   }
 
   setJobDetails(id){
     var jobDetails = this.joblist.data.filter(obj => obj.id == id);
     if(jobDetails.length>0){
         this.joblistService.setJobDetails(jobDetails[0]);
-        this.router.navigate(['jobs/ApplicationDetails'])
+        this.router.navigate(['jobs/ApplicationDetails/'+id])
     }
   }
 }
