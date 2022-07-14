@@ -11,6 +11,6 @@ export class JobService {
   constructor(private http: HttpClient) { }
   getJobPostByCompanyId() {
     // ${localStorage.getItem('company_id')}
-    return this.http.get(this.jobPostBaseUrl + `jobpost/getbycompanyid?id=2`)
+    return this.http.get(this.jobPostBaseUrl + 'jobpost/getbycompanyid?id='+localStorage.getItem('company_id'))
   }
 }
