@@ -3,7 +3,8 @@
 </div>
 <div class="main_page_holder">
   <div class="mainPage">
-    <div class="innter-main" routerLink="/jobs/job-post-form/0">
+   <div class="innter-main" routerLink="/jobs/job-post-form/0">
+      <a class=""  routerLink="/jobs/job-list-ui"> All Jobs</a>
       <div >
         <p class="title-of-card"> Post New Internship</p>
         <p>publish your job Post to thousands of</p>
@@ -13,10 +14,6 @@
       <i class='fas fa-angle-double-right' id="icon-w"></i>
     </div>
   </div>
-
-
-
-
   <div class="mainPage" *ngFor="let jobList of jobPostList">
     <div class="active-d">
       <div class="parantOfActive">
@@ -31,8 +28,8 @@
         <div class="img-title">
           <img src="assets/Screenshot 2022-03-15 204058.png" alt="" class="img-c" />
           <div class="text-seq">
-            <span class="text-c"> {{jobList.jobTitle?jobList.jobTitle:' Designer'}} </span>
-            <span class="text-c2"> {{jobList.company ?jobList.company:'FindingPi Incorporations'}} </span>
+            <span class="text-c"> {{jobList.jobtitle }} </span>
+            <span class="text-c2"> {{jobList.industry ?jobList.industry:'FindingPi Incorporations'}} </span>
             <span class="dayCount"> {{jobList.duration?jobList.duration:'2'}} day ago |
               {{jobList.noOfApplication?jobList.noOfApplication:'30'}} Applicants</span>
             <span style="font-size: 14px"><span class="job">Job category &nbsp;*&nbsp;
@@ -46,8 +43,8 @@
             Deactivate 
           </button>
 
-          <button *ngIf="!jobList.active" type="button" class="one" (click)="opendia12(jobList.id,jobList.active)">
-            Activate 
+          <button style="background: red;" *ngIf="!jobList.active" type="button" class="one" (click)="opendia12(jobList.id,jobList.active)">
+            ReActivate 
           </button>
           <button type="button" routerLink="/jobs/job-post-form/{{ jobList.id }}" class="two">
             Edit
@@ -72,7 +69,7 @@
 
         <div>
           <span class="t-e"> Stipend</span>
-          <span class="bold-t"> 2150,0 /Month</span>
+          <span class="bold-t"> {{ jobList.stipend}} /Month</span>
         </div>
         <div>
           <span class="t-e"> Duration</span>

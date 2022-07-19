@@ -155,8 +155,9 @@
 
                   <div class="form-group">
                     <label for="firstName">Job Title <span>*</span></label>
-                    <input type="text" class="form-control" formControlName="jobTitle" required
+                    <input type="text" class="form-control placeholderInput" (input)="inputChange()" (keydown.tab)="tabKeyPressed()" formControlName="titlevalue" required
                       placeholder="Java Software Developer" />
+                      <input type="text" class="form-control autocomplete" disabled  formControlName="placeholderValue" />
                       <div class="error-message" *ngIf="form.controls.jobTitle.errors?.required && form.controls.jobTitle.touched"> Job title is Required *</div>
                   </div>
                   <div style="

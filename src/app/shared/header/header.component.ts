@@ -32,7 +32,10 @@ export class HeaderComponent implements OnInit {
 
     this.networkService.event.subscribe(data => {
       this.getRequestList()
-    })
+    });
+    if(localStorage.getItem('member')=='' || localStorage.getItem('member')==null){
+        this.logOut();
+    }
   }
 
   getRequestList() {

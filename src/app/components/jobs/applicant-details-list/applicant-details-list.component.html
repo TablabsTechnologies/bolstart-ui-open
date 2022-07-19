@@ -5,10 +5,10 @@
         <div class="rightBar">
           <div class="filterSec">
             <div class="search">
-              <input type="text" placeholder="rushabh@gmail.com" name="search">
+              <input type="text" (keyup)="filterByName($event)" placeholder="rushabh@gmail.com" name="search">
               <button type="submit"><i class="fa fa-search"></i></button>
             </div>
-            <div class="filter"><a><i class="fa fa-filter" aria-hidden="true" style="margin-right: 5px;"></i>Filter</a></div>
+            <!-- <div class="filter"><a><i class="fa fa-filter" aria-hidden="true" style="margin-right: 5px;"></i>Filter</a></div> -->
           </div>
           <div class="applicantList" *ngIf="jobApplyers.length>0" >
             <div  [ngClass]="((activeIndex) == i)?'applicantCard active':'applicantCard'"  *ngFor="let item of jobApplyers;let i=index" (click)="getUserDetails(i)">

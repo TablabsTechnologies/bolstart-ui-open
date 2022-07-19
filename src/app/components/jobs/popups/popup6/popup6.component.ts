@@ -21,8 +21,7 @@ export class Popup6Component implements OnInit {
 
   }
   ngOnInit(): void {
-    console.log("Passed Data :",this.data.msg)
-    this.popupMessage = "Are You Sure you want to "+this.data.msg+" this job post for java Developer";
+   console.log(this.data)
   }
 
   updateJob(){

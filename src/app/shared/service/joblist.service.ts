@@ -27,13 +27,20 @@ export class JoblistService{
  createNewJob(requestBody){
   const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
   var requestUrl = this.base_url;
-  if(requestBody['id']==0){
+
     requestUrl = this.base_url+"jobpost/save";
     return this.http.post<any>(requestUrl, requestBody, { headers });
-  }else{
+  
+   
+}
+
+updateJob(requestBody){
+  const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
+  var requestUrl = this.base_url;
+
     requestUrl = this.base_url+"jobpost/jobpost/update";
     return this.http.put<any>(requestUrl, requestBody, { headers });
-  }
+  
    
 }
 
@@ -132,6 +139,13 @@ setJobStatusResponse(setJobStatus){
 
 getJobStatusResponse(){
  return this.setJobStatus;
+}
+
+
+getAllJobTitles(){
+  const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
+  var requestUrl = this.base_url+"jobtitle/job/getAll"
+   return this.http.get<any>(requestUrl);
 }
 
 }

@@ -382,3 +382,19 @@ li {
   color:#D5D5DC;
   opacity: 1;
 }
+.placeholderInput {
+  position: absolute;
+  z-index: 7;
+  border-radius: 4px;
+  width: 100%;
+  height: 30px;
+  font-size: 20px;
+  background-color: transparent;
+}
+
+.autocomplete {
+  color: silver;
+  z-index: 1;
+  font-size: 20px;
+  text-transform: uppercase;
+}
