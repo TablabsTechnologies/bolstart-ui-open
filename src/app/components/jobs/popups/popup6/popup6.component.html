@@ -5,8 +5,9 @@
     </p>
 
     <div class="content">
-        <p class="text-p">{{popupMessage}}</p>
-        <div class="buttons-dev">
+        <p class="text-p" *ngIf="data.id!=0">{{popupMessage }}</p>
+        <p class="text-p" *ngIf="data.id==0">{{data.msg}}</p>
+        <div class="buttons-dev" *ngIf="data.id!=0">
             <button class="deactivateBtn" (click)="updateJob()">{{ data.msg }}</button>
             <button class="cancel" (click)="onNoClick()"> Cancel</button>
         </div>

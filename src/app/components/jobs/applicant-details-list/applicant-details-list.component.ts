@@ -14,6 +14,7 @@ export class ApplicantDetailsListComponent implements OnInit {
   public jobApplyers:any=[];
   public jobApplyersDetails:any=[];
   jobDetailDetails:any=[];
+  originalsApplyer:any=[];
   public jobId:any;
   public jobDetail:any;
   public activeIndex:number=0;
@@ -53,6 +54,7 @@ export class ApplicantDetailsListComponent implements OnInit {
     this.joblistService.getAllJobApplyer(requestBody).subscribe((responseBody)=>{
         if(responseBody['success']){
           this.jobApplyers = responseBody['data']['AllJobApplyer'];
+          this.originalsApplyer = responseBody['data']['AllJobApplyer'];
           if(responseBody['data']['AllJobApplyer'].length==0){
               // this.getMessage.emit("No more applyer found.")
               // this.performAction={show_btn:false,action:"applyer",data:"No more applyer found."};
@@ -127,4 +129,25 @@ export class ApplicantDetailsListComponent implements OnInit {
   })
   }
 
+  filterByName(event){
+    //console.log("Values of input :",event.target.value.length);
+    const filteredEmails = this.jobApplyers.filter((e) =>{
+        if(e.userDetails.firstName.toUpperCase() ==event.target.value.toUpperCase()){
+          return e;
+        }
+    });
+
+    if(event.target.value.length!=0){
+      if(filteredEmails.length!=0){
+        this.jobApplyers = filteredEmails;
+        this.getUserDetails(0);
+      }else{
+        this.jobApplyers = this.originalsApplyer;
+        this.getUserDetails(0);
+      }
+    }else{
+      this.jobApplyers = this.originalsApplyer;
+      this.getUserDetails(0);
+    }
+  }
 }

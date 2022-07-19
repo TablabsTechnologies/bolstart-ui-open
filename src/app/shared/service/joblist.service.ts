@@ -12,33 +12,41 @@ export class JoblistService{
  joburl = environment.jobPostBaseUrl;
  JobDetails:any;
  setJobStatus:any;
+ base_url = environment.jobPostBaseUrl;
  uploadResponse:BehaviorSubject<object>=new BehaviorSubject<object>({})
  
  constructor(private http:HttpClient){}
 
  getAllJobsList(){
    // return this.http.get('assets/getAllJobs.json');
-    var requestUrl = "http://localhost:9090/jobpost/job/getAll"
+    var requestUrl = this.base_url+"jobpost/job/getAll"
     return this.http.get(requestUrl);
  }
 
  
  createNewJob(requestBody){
   const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
-  var requestUrl = "http://localhost:9090/"
-  if(requestBody['id']==0){
-    requestUrl = requestUrl+"jobpost/save";
+  var requestUrl = this.base_url;
+
+    requestUrl = this.base_url+"jobpost/save";
     return this.http.post<any>(requestUrl, requestBody, { headers });
-  }else{
-    requestUrl = requestUrl+"jobpost/jobpost/update";
+  
+   
+}
+
+updateJob(requestBody){
+  const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
+  var requestUrl = this.base_url;
+
+    requestUrl = this.base_url+"jobpost/jobpost/update";
     return this.http.put<any>(requestUrl, requestBody, { headers });
-  }
+  
    
 }
 
 getJob(requestBody){
   const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
-  var requestUrl = "http://localhost:9090/jobpost/getbyjobPostId?id="+requestBody['id']
+  var requestUrl = this.base_url+"jobpost/getbyjobPostId?id="+requestBody['id']
    return this.http.get<any>(requestUrl, requestBody);
 }
 
@@ -54,8 +62,8 @@ getJob(requestBody){
  
  applyToJob(requestBody){
    const headers = { 'Authorization': 'Bearer my-token'};
-   this.joburl = "http://localhost:9090"
-   var requestUrl = "http://localhost:9090/jobpost/job/applyJob";
+   this.joburl = this.base_url;
+   var requestUrl = this.base_url+"jobpost/job/applyJob";
    return this.http.post<any>(requestUrl, requestBody, { headers });
   // const headers = { 'Authorization': 'Bearer my-token', 'Content-Type': 'multipart/form-data' };
   //  return this.http.post<any>(this.joburl+'/jobpost/uploadImage?id=4', requestBody, { headers });
@@ -95,33 +103,33 @@ getUploadResponse(){
 
 addToSaveList(requestBody){
   const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
-   return this.http.post<any>(this.joburl+'/jobpost/job/saveJos', requestBody, { headers });
+   return this.http.post<any>(this.base_url+'jobpost/job/saveJos', requestBody, { headers });
 }
 
 getAllJobApplyer(requestBody){
   const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
-  var requestUrl = "http://localhost:9090/jobpost/job/getJobApplyer?jobId="+requestBody['jobId']
+  var requestUrl = this.base_url+"jobpost/job/getJobApplyer?jobId="+requestBody['jobId']
    return this.http.post<any>(requestUrl, requestBody, { headers });
 }
 
 
 updateRating(requestBody){
   const headers = {};
-  var requestUrl = "http://localhost:9090/jobpost/jobpost/applyedJobStarRating"
+  var requestUrl = this.base_url+"jobpost/jobpost/applyedJobStarRating"
    return this.http.put<any>(requestUrl, requestBody, { headers });
 }
 
 
 updateRecruiterAction(requestBody){
   const headers = {};
-  var requestUrl = "http://localhost:9090/jobpost/jobpost/updateRecruiterAction"
+  var requestUrl = this.base_url+"jobpost/jobpost/updateRecruiterAction"
    return this.http.put<any>(requestUrl, requestBody, { headers });
 }
 
 
 updateJobStatus(requestBody){
   const headers = {};
-  var requestUrl =  this.joburl+"/jobpost/jobpost/deActiveJobPost"
+  var requestUrl =  this.base_url+"jobpost/jobpost/deActiveJobPost"
    return this.http.put<any>(requestUrl, requestBody, { headers });
 }
 
@@ -131,6 +139,13 @@ setJobStatusResponse(setJobStatus){
 
 getJobStatusResponse(){
  return this.setJobStatus;
+}
+
+
+getAllJobTitles(){
+  const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' };
+  var requestUrl = this.base_url+"jobtitle/job/getAll"
+   return this.http.get<any>(requestUrl);
 }
 
 }

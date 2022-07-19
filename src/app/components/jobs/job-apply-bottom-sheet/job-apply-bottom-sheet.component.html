@@ -5,7 +5,7 @@
       <div class="text-seq">
         <span class="text-c"> {{ jobDetails['jobTitle'] }} </span>
         <span class="text-c2"> {{ jobDetails['company'] }} </span>
-        <span style="font-size: 12px"> TODO day ago | TODO Applicants</span>
+        <span style="font-size: 12px"> {{ jobDetails['startDate'] }} day ago | {{ jobDetails['noOfApplication'] }} Applicants</span>
         <span style="font-size: 13px"
           ><span class="job">Job category &nbsp;*&nbsp; </span> {{ jobDetails['jobCategeory'] }}</span
         >
